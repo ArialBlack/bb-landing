@@ -1,0 +1,22 @@
+{
+  "name": "bookboxlanding_ui",
+  "description": "",
+  "main": "",
+  "authors": [
+    "mnovikov <max.vashuk@gmail.com>",
+    "ArialBlack <andreyturik@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    ".idea"
+  ],
+  "dependencies": {
+    "waypoints": "~4.0.0",
+    "bootstrap": "~3.3.6"
+  }
+}
