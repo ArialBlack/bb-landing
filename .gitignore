@@ -224,28 +224,11 @@ bower_components/
 !modules/
 modules/*
 !modules/custom/
+modules/*/modules
 
 !themes/
 themes/*
-!themes/violet_ui/
-themes/violet_ui/css/
+!themes/bookboxlanding_ui/
+themes/bookboxlanding_ui/css/
 
-themes/violet_ui/templates/html--node__3.tpl.php
-themes/violet_ui/templates/html--node__4.tpl.php
-themes/violet_ui/templates/html--node__5.tpl.php
-themes/violet_ui/templates/html--node__6.tpl.php
-themes/violet_ui/templates/html--node__7.tpl.php
-themes/violet_ui/templates/html--node__8.tpl.php
-themes/violet_ui/templates/html--node__9.tpl.php
-themes/violet_ui/templates/html--node__10.tpl.php
-themes/violet_ui/templates/html--node__11.tpl.php
-themes/violet_ui/templates/html--node__12.tpl.php
- themes/violet_ui/templates/html--node__13.tpl.php
-themes/violet_ui/templates/html--node__14.tpl.php
-themes/violet_ui/templates/html--node__15.tpl.php
-themes/violet_ui/templates/html--node__16.tpl.php
-themes/violet_ui/templates/html--node__17.tpl.php
-themes/violet_ui/templates/html--node__18.tpl.php
-themes/violet_ui/templates/html--node__19.tpl.php
-themes/violet_ui/templates/html--node__20.tpl.php
-themes/violet_ui/templates/html--node__21.tpl.php
+themes/bookboxlanding_ui/templates/html--node__1.tpl.php

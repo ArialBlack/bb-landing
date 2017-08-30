@@ -1,2 +1,57 @@
 // // Bootstrap library.
 @import '../../../themes/bookboxlanding_ui/bower_components/bootstrap/less/bootstrap';
+
+.books-list {
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.view-partners {
+  .views-row {
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+  }
+
+  a {
+    .hover-logo {
+      display: none;
+    }
+
+    &:hover {
+      .normal-logo {
+        display: none;
+      }
+
+      .hover-logo {
+        display: block;
+      }
+    }
+  }
+}
+
+.view-articles {
+  .media-object {
+    width: 260px;
+  }
+
+  a {
+    .hover-logo {
+      display: none;
+    }
+
+    &:hover {
+      .normal-logo {
+        display: none;
+      }
+
+      .hover-logo {
+        display: block;
+      }
+    }
+  }
+}
+
+.faq-tab .faq-tab-content:not(.active){
+  display: none;
+}

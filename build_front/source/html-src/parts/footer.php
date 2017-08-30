@@ -3,6 +3,6 @@
         
     </div>
 </footer>
-<script src="/sites/all/themes/themesbookboxlanding_ui/js/vendors/jquery.min.js"></script>
-<script src="/sites/all/themes/themesbookboxlanding_ui/boostrap/dist/js/bootstrap.min.js"></script>
-<script src="/sites/all/themes/themesbookboxlanding_ui/js/main.js"></script>
+<script src="/sites/all/themes/bookboxlanding_ui/js/vendors/jquery.min.js"></script>
+<script src="/sites/all/themes/bookboxlanding_ui/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/sites/all/themes/bookboxlanding_ui/js/main.js"></script>

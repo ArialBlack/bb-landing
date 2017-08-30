@@ -1,0 +1,42 @@
+name = bookboxlanding ui
+description = Uses the Bootstrap Framework LESS source files and must be compiled (not for beginners).
+core = 7.x
+base theme = bootstrap
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[prenavigation]     = 'Pre Navigation'
+regions[navigation]     = 'Navigation'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[precontent]        = 'PreContent'
+regions[content]        = 'Content'
+regions[content_bottom] = 'Content bottom'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+
+regions[page_top]       = 'Page top'
+regions[page_bottom]    = 'Page bottom'
+regions[slider]         = 'Page Slider'
+
+regions[footer]         = 'Footer'
+;;;;;;;;;;;;;;;;;;;;;
+;; Stylesheets
+;;;;;;;;;;;;;;;;;;;;;
+stylesheets[all][] = css/style.css
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+scripts[] = 'js/bootstrap.min.js'
+scripts[] = 'js/tooltip.js'
+scripts[] = 'js/popover.js'
+
+scripts[] = 'js/main.js''
+
+; Disable BootstrapCDN so the compiled LESS source files can be used.
+settings[bootstrap_cdn] = ''

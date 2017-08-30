@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title><?php print $node->title;?> | <?php print variable_get('site_name'); ?></title>
+    <title><?php print $node_object->title;?> | <?php print variable_get('site_name'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/sites/all/themes/bookboxlanding_ui/css/style.css">
     <link rel="apple-touch-icon" sizes="57x57" href="/sites/all/themes/bookboxlanding_ui/apple-icon-57x57.png">
