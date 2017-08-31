@@ -25,7 +25,10 @@ module.exports = function(grunt) {
 
                 files: {
                     // files go here, like so:
-                    "../themes/bookboxlanding_ui/templates/html--node__1.tpl.php": "source/html-src/index.php", //ready
+                    "../themes/bookboxlanding_ui/templates/html--node__1.tpl.php": "source/html-src/index.php",
+                    "../themes/bookboxlanding_ui/templates/html--node__49.tpl.php": "source/html-src/contacts.php",
+                    "../themes/bookboxlanding_ui/templates/html--node__50.tpl.php": "source/html-src/privacy.php",
+                    "../themes/bookboxlanding_ui/templates/html--node__51.tpl.php": "source/html-src/terms.php",
                 }
             }
         },

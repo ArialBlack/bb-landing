@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container">
-        
+        Footer goes here
     </div>
 </footer>
 <script src="/sites/all/themes/bookboxlanding_ui/js/vendors/jquery.min.js"></script>

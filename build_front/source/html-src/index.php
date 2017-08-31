@@ -1,7 +1,6 @@
 ﻿<?php
 $node_object = node_load(1);
 $node = node_view(node_load(1),'full');
-dsm($node);
 
 // intro
 $intro = $node['field_paragraphs'][0]['entity']['paragraphs_item'][1];
@@ -34,6 +33,11 @@ $articles_title = $node['field_paragraphs'][5]['entity']['paragraphs_item'][6]['
 
 //FAQ
 $faq_title = $node['field_paragraphs'][6]['entity']['paragraphs_item'][7]['field_title']['#items'][0]['value'];
+
+//form
+$form = $node['field_paragraphs'][8]['entity']['paragraphs_item'][15];
+$form_title = $form['field_title']['#items'][0]['value'];
+$form_subtitle = $form['pp_title']['#items'][0]['value'];
 ?>
 
 <!--(bake parts/head.php)-->
@@ -127,9 +131,20 @@ $faq_title = $node['field_paragraphs'][6]['entity']['paragraphs_item'][7]['field
         <h2><?php print $faq_title; ?></h2>
 
         <!--(bake parts/faq.php)-->
-        
     </div>
 </div>
+
+<section id="contacts">
+    <div class="container">
+        <h2><?php print $form_title; ?></h2>
+        <h3><?php print $form_subtitle ?></h3>
+
+        <?php
+            $feedback_block = module_invoke('webform', 'block_view', 'client-block-48');
+            print render($feedback_block['content']);
+        ?>
+    </div>
+</section>
 
     <!--(bake parts/footer.php)-->
 </body>
