@@ -1,79 +1,78 @@
+<?php
+    $topics = $node['field_paragraphs'][7]['entity']['paragraphs_item'][9]['pp_items_node']['#items'];
+    $topics_nodes = [];
+
+    for($i=0; $i < count($topics); $i++) {
+        $topic_node_nid = $topics[$i]['target_id'];
+        $topic_node = node_load($topic_node_nid);
+        array_push($topics_nodes, $topic_node);
+    }
+?>
 <div class="faq-tab-container">
     <div class="col-sm-4 faq-tab-menu">
         <div class="list-group">
-            <a href="#" class="list-group-item active text-center">
-                Flight
-            </a>
-            <a href="#" class="list-group-item text-center">
-                Train
-            </a>
-            <a href="#" class="list-group-item text-center">
-                Hotel
-            </a>
-            <a href="#" class="list-group-item text-center">
-                Restaurant
-            </a>
-            <a href="#" class="list-group-item text-center">
-                Credit Card
-            </a>
+            <?php
+                print '<a href="#" class="list-group-item active text-center">' . $topics_nodes[0]->title . '</a>';
+
+                for($i=1; $i < count($topics_nodes); $i++) {
+                    print '<a href="#" class="list-group-item text-center">' . $topics_nodes[$i]->title . '</a>';
+                }
+            ?>
         </div>
     </div>
 
     <div class="col-sm-8 faq-tab">
-        <div class="faq-tab-content active">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Collapsible Group Item #1
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Collapsible Group Item #2
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                        <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Collapsible Group Item #3
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="faq-tab-content">
-            Train
-        </div>
-        <div class="faq-tab-content">
-            Hotel
-        </div>
-        <div class="faq-tab-content">
-            Credit Card
-        </div>
+        <?php
+            $active_class = '';
+
+            for ($i=0; $i < count($topics_nodes); $i++) {
+            $topic_nid = $topics_nodes[$i]->nid;
+            $topic_view_node = node_view(node_load($topic_nid),'full');
+
+            if($i==0) {
+                $active_class = ' active';
+            } else {
+                $active_class = '';
+            }
+
+            print '<div class="faq-tab-content' . $active_class . '">';
+
+            $questions = $topic_view_node['field_paragraphs'][0]['entity']['paragraphs_item'];
+            reset($questions);
+            $first_key = key( $questions);
+            $question_items = $questions[$first_key]['pp_items_node']['#items'];
+
+            print '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">';
+            $exp_status = 'false';
+            $in = '';
+
+                for($j=0; $j<count($question_items); $j++) {
+                $nid = $question_items[$j]['target_id'];
+                $question_node = node_load($nid);
+
+                if($j==0) {
+                    $exp_status = 'true';
+                    $in = ' in';
+                } else {
+                    $exp_status = 'false';
+                    $in = '';
+                }
+                
+                print '<div class="panel panel-default">';
+                print '<div class="panel-heading" role="tab" id="heading' . $j . '">';
+                print '<h4 class="panel-title">';
+                print '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' . $j . '" aria-expanded="' . $exp_status . '" aria-controls="collapse' . $j . '">';
+                print $question_node->title;
+                print '</a></h4></div>';
+                print '<div id="collapse' . $j . '" class="panel-collapse collapse' . $in . '" role="tabpanel" aria-labelledby="heading' . $j . '">';
+                print '<div class="panel-body">';
+                print $question_node->body['und'][0]['safe_value'];
+                print '</div></div></div>';
+            }
+
+            print '</div>';
+            print '</div>';
+        }
+        ?>
     </div>
 </div>
