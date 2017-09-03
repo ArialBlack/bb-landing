@@ -1,0 +1,150 @@
+.page-contacts {
+  background: @bg-color;
+
+  #contacts {
+    position: relative;
+
+    .scroll-to {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .first-block-contacts {
+    padding-top: 230px;
+    padding-bottom: 60px;
+    background: @yellow;
+
+    h1 {
+      font-family: gillsans-bold;
+      color: @header-text;
+      font-size: 60px;
+      text-transform: uppercase;
+    }
+    h2,
+    h3 {
+      position: relative;
+      float: left;
+      padding-left: 35px;
+      font-family: gillsans-bold;
+      font-size: @text-block-title;
+      color: @header-text;
+    }
+
+    h3 {
+      margin-left: 70px;
+    }
+
+    h2:before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 0;
+      background: url(../images/phone.png) no-repeat;
+      height: 100%;
+      width: 30px;
+      background-size: 90%;
+    }
+
+    h3:before {
+      content:'';
+      position: absolute;
+      left:-5px;
+      top:0;
+      background: url(../images/mail.png) no-repeat;
+      height: 100%;
+      width: 30px;
+      background-size: 90%;
+    }
+
+    img {
+      margin-left: 20px;
+      margin-top: -30px;
+    }
+  }
+
+  .second-block-contacts {
+    background: @bg-color;
+    padding: 90px 0 170px 0;
+
+    h2 {
+      font-family: gillsans-bold;
+      font-size: @screen-title;
+      text-transform: uppercase;
+
+      mark {
+        color: #fff;
+        background-color: #2c2b33;
+      }
+    }
+
+    .webform-client-form.webform-client-form-49 {
+      padding-top: 50px;
+
+      .control-label {
+        font-family: ubuntu-medium;
+        font-size: @menu-text;
+        text-transform: uppercase;
+      }
+
+      input {
+        height: 55px;
+        font-family: ubuntu-medium;
+        font-size: @body-text-n;
+        color: @bg-color;
+      }
+
+      .form-item.webform-component {
+        width: 48%;
+      }
+
+      .webform-component--name {
+        float: left;
+      }
+
+      .webform-component--email {
+        float: left;
+        clear: left;
+        padding-top: 10px;
+      }
+
+      .webform-component--message {
+        float: right;
+        margin-top: -94px;
+
+        #edit-submitted-message {
+          height: 160px;
+        }
+      }
+
+      .form-actions {
+        padding-top: 15px;
+        clear: both;
+        text-align: right;
+
+        button {
+          border-radius: 0;
+          height: 70px;
+          width: 25%;
+          text-transform: uppercase;
+          font-family: ubuntu-medium;
+          font-size: @body-text-n;
+          color: #fff;
+          background: @red;
+          -webkit-box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.58);
+          -moz-box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.58);
+          box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.58);
+
+          &:hover {
+            background: #db553f;
+            -webkit-box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.78);
+            -moz-box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.78);
+            box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.78);
+          }
+        }
+      }
+    }
+  }
+}

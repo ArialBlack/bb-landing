@@ -1,0 +1,55 @@
+.page-terms {
+  background: @bg-color;
+
+  #terms-of-use {
+    position: relative;
+
+    .scroll-to {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .first-block-terms {
+      padding-top: 230px;
+      padding-bottom: 60px;
+      background: @yellow;
+
+      h1 {
+        font-family: gillsans-bold;
+        color: @header-text;
+        font-size: 60px;
+        text-transform: uppercase;
+      }
+
+      img {
+        margin-left: 20px;
+        margin-top: -30px;
+      }
+    }
+
+    .second-block-terms {
+      background: @bg-color;
+      padding: 90px 0 130px 0;
+
+      p {
+        margin-bottom: 20px;
+        font-family: ubuntu-medium;
+        font-size: @body-text-n;
+        color: #828282;
+
+        strong {
+          font-family: gillsans-bold;
+          font-size: @text-block-title;
+          color: @header-text;
+
+          em {
+            font-style: normal;
+            color: #f86b54;
+          }
+        }
+      }
+    }
+  }
+}

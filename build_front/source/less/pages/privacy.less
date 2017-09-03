@@ -1,0 +1,67 @@
+.page-privacy {
+  background: @bg-color;
+
+  #privacy {
+    position: relative;
+
+    .scroll-to {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .first-block-privacy {
+      padding-top: 230px;
+      padding-bottom: 60px;
+      background: @yellow;
+
+      h1 {
+        font-family: gillsans-bold;
+        color: @header-text;
+        font-size: 60px;
+        text-transform: uppercase;
+      }
+
+      img {
+        margin-top: -30px;
+      }
+    }
+
+    .second-block-privacy {
+      padding: 90px 0 130px 0;
+
+      h2 {
+        margin:0;
+        font-family: gillsans-bold;
+        color: @header-text;
+        font-size: @text-block-title;
+        padding-bottom: 25px;
+      }
+
+      p {;
+        font-family: ubuntu-medium;
+        font-size: @body-text-n;
+        color: #828282;
+      }
+
+      blockquote {
+        position: relative;
+
+        p {
+          color: @header-text;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          left:0;
+          top:0;
+          height:100%;
+          width:2px;
+          background: @red;
+        }
+      }
+    }
+  }
+}

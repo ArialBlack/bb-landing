@@ -1,0 +1,77 @@
+footer.footer {
+  background: @footer-color;
+  padding-top: 60px;
+  padding-bottom: 35px;
+
+  .links-row {
+    padding-bottom: 35px;
+  }
+
+  .footer-logo {
+    img {
+      width: 105px;
+    }
+  }
+
+  .read-better {
+    h1 {
+      padding-bottom: 20px;
+      margin: 0;
+      font-family: gillsans-bold;
+      font-size: 30px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    a {
+      text-decoration: underline;
+      font-family: ubuntu-medium;
+      font-size: @body-text-n;
+      color: #8e8e8e;
+
+      &:hover {
+        color: @yellow;
+      }
+    }
+  }
+
+  .footer-links {
+    li {
+      list-style-type: none;
+      line-height: 25px;
+      a {
+        font-family: ubuntu-medium;
+        font-size: @body-text-n;
+        color: #8e8e8e;
+
+        @media (max-width: @max-sm) {
+          font-size: @menu-text;
+        }
+
+        &:hover {
+          color: @yellow;
+          text-decoration: none;
+        }
+      }
+
+    }
+  }
+
+  .all-rights {
+    position: relative;
+    padding-top: 30px;
+    font-family: ubuntu-medium;
+    font-size: @menu-text;
+    color: #fff;
+
+    &:before {
+      content:'';
+      position: absolute;
+      top:0;
+      left: 1%;
+      width: 98%;
+      height: 1px;
+      background: #4d4d4d;
+    }
+  }
+}

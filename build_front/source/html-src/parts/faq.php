@@ -9,7 +9,7 @@
     }
 ?>
 <div class="faq-tab-container">
-    <div class="col-sm-4 faq-tab-menu">
+    <div class="col-sm-3 faq-tab-menu">
         <div class="list-group">
             <?php
                 print '<a href="#" class="list-group-item active text-center">' . $topics_nodes[0]->title . '</a>';
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="col-sm-8 faq-tab">
+    <div class="col-sm-9 faq-tab">
         <?php
             $active_class = '';
 
@@ -57,7 +57,7 @@
                     $exp_status = 'false';
                     $in = '';
                 }
-                
+
                 print '<div class="panel panel-default">';
                 print '<div class="panel-heading" role="tab" id="heading' . $j . '">';
                 print '<h4 class="panel-title">';
