@@ -118,6 +118,7 @@ function buildCategory() {
   // End of Books functions
 }
 
+
 $(".faq-tab-menu>div.list-group>a").click(function(e) {
     e.preventDefault();
     $(this).siblings('a.active').removeClass("active");

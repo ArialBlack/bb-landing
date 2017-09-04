@@ -35,14 +35,14 @@
                 $active_class = '';
             }
 
-            print '<div class="faq-tab-content' . $active_class . '">';
+            print '<div id="tab-id-' . $i . '" class="faq-tab-content' . $active_class . '">';
 
             $questions = $topic_view_node['field_paragraphs'][0]['entity']['paragraphs_item'];
             reset($questions);
             $first_key = key( $questions);
             $question_items = $questions[$first_key]['pp_items_node']['#items'];
 
-            print '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">';
+            print '<div class="panel-group" id="accordion-' . $i . '" role="tablist" aria-multiselectable="true">';
             $exp_status = 'false';
             $in = '';
 
@@ -59,12 +59,12 @@
                 }
 
                 print '<div class="panel panel-default">';
-                print '<div class="panel-heading" role="tab" id="heading' . $j . '">';
+                print '<div class="panel-heading" role="tab" id="heading-' . $i . '-' . $j . '">';
                 print '<h4 class="panel-title">';
-                print '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' . $j . '" aria-expanded="' . $exp_status . '" aria-controls="collapse' . $j . '">';
+                print '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-' . $i . '-' . $j . '" aria-expanded="' . $exp_status . '" aria-controls="collapse-' . $i . '-' . $j . '">';
                 print $question_node->title;
                 print '</a></h4></div>';
-                print '<div id="collapse' . $j . '" class="panel-collapse collapse' . $in . '" role="tabpanel" aria-labelledby="heading' . $j . '">';
+                print '<div id="collapse-' . $i . '-' . $j . '" class="panel-collapse collapse' . $in . '" role="tabpanel" aria-labelledby="heading-' . $i . '-' . $j . '">';
                 print '<div class="panel-body">';
                 print $question_node->body['und'][0]['safe_value'];
                 print '</div></div></div>';

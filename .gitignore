@@ -232,3 +232,6 @@ themes/*
 themes/bookboxlanding_ui/css/
 
 themes/bookboxlanding_ui/templates/html--node__1.tpl.php
+themes/bookboxlanding_ui/templates/html--node__49.tpl.php
+themes/bookboxlanding_ui/templates/html--node__50.tpl.php
+themes/bookboxlanding_ui/templates/html--node__51.tpl.php
