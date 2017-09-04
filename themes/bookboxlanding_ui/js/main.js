@@ -128,6 +128,10 @@ $(".faq-tab-menu>div.list-group>a").click(function(e) {
     $(".faq-tab>.faq-tab-content").eq(index).addClass("active");
 });
 
+$('.panel-collapse').on('shown.bs.collapse', function () {
+    $('.faq-tab-content.active .panel-collapse').not(this).removeClass('in');
+})
+
 $(document).ready (function() {
     console.log('run');
 
