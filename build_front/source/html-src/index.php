@@ -53,12 +53,12 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
         <div class="intro-content">
           <div class="container">
             <div class="row">
-              <div class="col-md-6 col-sm-8">
+              <div class="col-md-6 col-sm-8 col-xs-9">
                 <h1><mark><?php print $into_title; ?></mark></h1>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-3 col-sm-5">
+              <div class="col-md-3 col-sm-5 col-xs-5">
                 <a class="btn btn-danger" href="#order">Замовити</a>
               </div>
             </div>
@@ -102,13 +102,13 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 
 <section id="price">
     <div class="container">
-    <div class="col-md-3 col-sm-3">
+    <div class="col-md-3 col-sm-3 col-xs-4">
         <h2><mark><?php print $price_title; ?></mark></h2>
     </div>
-    <div class="col-md-5 col-sm-6 text-right">
+    <div class="col-md-5 col-sm-6 col-xs-6 text-right price-count">
         <h3><?php print $price_value; ?></h3>
     </div>
-    <div class="col-md-3 col-sm-3 col-md-offset-1">
+    <div class="col-md-3 col-sm-3 col-xs-4 col-md-offset-1 right-text">
         <h4><?php print $price_prefix; ?></h4>
         <h5><?php print $price_notes; ?></h5>
     </div>

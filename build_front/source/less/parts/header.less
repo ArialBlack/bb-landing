@@ -8,6 +8,10 @@
   .login-container {
     position: relative;
 
+    @media (max-width: @max-xs) {
+      display: none;
+    }
+
     &:after {
       content:'';
       position: absolute;
@@ -19,7 +23,7 @@
       opacity: .17;
     }
 
-    ul  {
+    ul {
       list-style-type: none;
 
       li {
@@ -105,16 +109,179 @@
     background: none;
     border: none;
 
+    @media (max-width: @max-xs) {
+      min-height: 65px;
+      padding: 15px 15px;
+      position: relative;
+
+      &:after {
+        content:'';
+        position: absolute;
+        bottom:0;
+        right: 15px;
+        width: ~'calc(100% - 30px)';
+        height: 2px;
+        background: #332d3e;
+        opacity: .17;
+      }
+
+      .navbar-header {
+        position: relative;
+      }
+    }
+
+    ul.mobile-log-btns {
+      display: none;
+      list-style-type: none;
+
+      @media (max-width: @max-xs) {
+        display: inline-block;
+        position: absolute;
+        right: 95px;
+      }
+
+      @media (max-width: 500px) {
+        display: none;
+      }
+
+      li {
+        display: inline-block;
+        line-height: 54px;
+
+        .login,
+        .reg {
+          font-family: ubuntu-medium;
+          color: @header-text;
+          font-size: 13px;
+          text-transform: uppercase;
+          -webkit-transition: all .4s ease;
+          -moz-transition: all .4s ease;
+          -ms-transition: all .4s ease;
+          -o-transition: all .4s ease;
+          transition: all .4s ease;
+        }
+
+        .login {
+          margin-right: 20px;
+          position: relative;
+
+          &:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 1px;
+            width: 100%;
+            height: 2px;
+            background: rgb(51, 45, 62);
+            opacity: 0;
+            -webkit-transition: opacity .4s ease;
+            -moz-transition: opacity .4s ease;
+            -ms-transition: opacity .4s ease;
+            -o-transition: opacity .4s ease;
+            transition: opacity .4s ease;
+          }
+
+          &:hover {
+            text-decoration: none;
+
+            &:after {
+              opacity:1;
+            }
+          }
+
+          &:focus {
+            text-decoration: none;
+            &:after {
+              opacity: 0;
+            }
+          }
+        }
+
+        .reg {
+          padding: 11px 15px;
+          border: 2px solid rgba(51, 45, 62, .07);
+          background: rgba(46, 46, 46, .1);
+          -webkit-transition: all .4s ease;
+          -moz-transition: all .4s ease;
+          -ms-transition: all .4s ease;
+          -o-transition: all .4s ease;
+          transition: all .4s ease;
+
+          &:hover {
+            text-decoration: none;
+            border-color: rgba(51, 45, 62, 1);
+          }
+
+          &:focus {
+            text-decoration: none;
+            border-color: rgba(46, 46, 46, 1);
+            background: rgba(46, 46, 46, 1);
+            color: #ffffff;
+          }
+        }
+      }
+    }
+
+    .navbar-brand {
+
+      @media (max-width: @max-xs) {
+        padding: 0;
+
+        img {
+          width: 85px;
+        }
+      }
+    }
+
+    .navbar-toggle {
+      border: none;
+      margin: 0;
+      margin-top: 9px;
+      padding: 0 5px;
+      background: @header-text;
+
+      &.collapsed {
+        background: none;
+      }
+
+      .icon-bar {
+        height: 3px;
+        width: 30px;
+        background: @yellow;
+        margin:7px 0;
+      }
+
+      &.collapsed {
+        .icon-bar {
+          background: @header-text;
+
+        }
+      }
+    }
+
     #navbar {
       @media (min-width: 768px) {
         margin-right: -45px;
       }
 
+      @media (max-width: @max-xs) {
+        //margin-left: -30px;
+        //margin-right: -30px;
+        margin-top: 14px;
+        border-top: 2px solid rgba(0, 0, 0, .2);
+        background: @header-text;
+      }
       .nav.navbar-nav {
         margin-top: 20px;
 
         li {
           margin-left: 25px;
+
+          @media (max-width: @max-xs) {
+            margin-left: 0;
+            text-align: center;
+            padding: 10px;
+          }
 
           &:first-child {
             margin-left: 0;
@@ -136,6 +303,10 @@
 
             &:hover {
               color: @header-text;
+            }
+
+            @media (max-width: @max-xs) {
+              color: @yellow;
             }
           }
         }

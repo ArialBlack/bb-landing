@@ -5,6 +5,14 @@ footer.footer {
 
   .links-row {
     padding-bottom: 35px;
+
+    @media (max-width: 500px) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding-bottom: 10px;
+    }
   }
 
   .footer-logo {
@@ -14,6 +22,10 @@ footer.footer {
   }
 
   .read-better {
+    @media (max-width: 500px) {
+      width: 50%;
+    }
+
     h1 {
       padding-bottom: 20px;
       margin: 0;
@@ -21,6 +33,15 @@ footer.footer {
       font-size: 30px;
       color: #fff;
       text-transform: uppercase;
+
+
+      @media (max-width: @max-xs) {
+        font-size: 23px;
+      }
+
+      @media (max-width: 500px) {
+        padding-bottom: 5px;
+      }
     }
 
     a {
@@ -36,6 +57,24 @@ footer.footer {
   }
 
   .footer-links {
+    @media (max-width: 500px) {
+      position: relative;
+      padding-top: 20px;
+      margin-top: 20px;
+      width: 100%;
+      text-align: center;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 1%;
+        width: 98%;
+        height: 1px;
+        background: #4d4d4d;
+      }
+    }
+
     li {
       list-style-type: none;
       line-height: 25px;
@@ -46,6 +85,10 @@ footer.footer {
 
         @media (max-width: @max-sm) {
           font-size: @menu-text;
+        }
+
+        @media (max-width: @max-xs) {
+          font-size: 13px;
         }
 
         &:hover {

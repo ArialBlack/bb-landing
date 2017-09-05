@@ -10,6 +10,10 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
+            <ul class="mobile-log-btns">
+                <li><a href="https://lib.bookbox.ua/user" class="login">Вхід</a></li>
+                <li><a href="https://lib.bookbox.ua/user/register" class="reg">Реєстрація</a></li>
+            </ul>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
