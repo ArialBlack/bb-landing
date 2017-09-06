@@ -355,11 +355,8 @@ $(document).ready(function() {
    $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({cursorborder:"",cursorcolor:"rgba(0, 0, 0, .2)",boxzoom:false});
   }
 
-  $('.page-contacts .collapse.navbar-collapse a').
-
-
   //Front Validation
-  $(document).on('click', '.page-main .webform-client-form .webform-submit',function() {
+  $('.page-main #contacts .webform-submit').click(function() {
     validateEmail('#edit-submitted-email');
     validateTel('#edit-submitted-tel');
     validateCompany('#edit-submitted-company');
