@@ -49,12 +49,15 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 <?php print $messages; ?>
 
 <section id="intro">
-        <img src="<?php print $intro_cover_image; ?>" />
+        <img src="<?php print $intro_cover_image; ?>" class="intro-bg-1"/>
+        <img src="sites/all/themes/bookboxlanding_ui/images/intro/lamp.png" class="intro-lamp-back" />
+        <img src="sites/all/themes/bookboxlanding_ui/images/intro/line.png" class="intro-line-back" />
+        <img src="sites/all/themes/bookboxlanding_ui/images/intro/human.png" class="intro-human-back" />
         <div class="intro-content">
           <div class="container">
             <div class="row">
               <div class="col-md-6 col-sm-8 col-xs-9">
-                <h1><mark><?php print $into_title; ?></mark></h1>
+                <h1><strong><?php print $into_title; ?></strong></h1>
               </div>
             </div>
             <div class="row">
@@ -108,7 +111,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
     <div class="col-md-5 col-sm-6 col-xs-6 text-right price-count">
         <h3><?php print $price_value; ?></h3>
     </div>
-    <div class="col-md-3 col-sm-3 col-xs-4 col-md-offset-1 right-text">
+    <div class="col-md-3 col-sm-3 col-xs-4 col-md-offset-1">
         <h4><?php print $price_prefix; ?></h4>
         <h5><?php print $price_notes; ?></h5>
     </div>

@@ -15,7 +15,7 @@ function getCategory() {
     $.getJSON( category_json, {format: "json"})
         .done(function( data ) {
             categories = data;
-
+            initListeners();
             for(var i=0; i < categories.length; i++) {
 
                 for(var j=0; j < categories[i].children.length; j++) {
@@ -40,6 +40,7 @@ function getHits() {
     $.getJSON( hits_json, {format: "json"})
        .done(function( data0 ) {
            hits = data0.hits;
+           console.log(hits)
        });
 }
 
@@ -55,74 +56,7 @@ function buildBookList() {
     books = books + '</ul></li>';
 }
 
-function buildCategory() {
-
-  for(var i=0; i < categories.length; i++) {
-    //console.log(data[i]);
-
-    menu = menu + '<li class="category"><a href="#">' + categories[i].name + '</a>';
-    menu = menu + '<ul class="child-categories">';
-    //console.log(data[i].children.length);
-
-    for(var j=0; j < categories[i].children.length; j++) {
-      menu = menu + '<li class="child-category"><a href="#">' + categories[i].children[j].name + '</a></li>';
-
-    }
-
-    menu = menu + '</ul></li>';
-  }
-
-  menu = menu + '</ul>';
-  $('.books-nav').html(menu);
-
-  books = books +'<div class="list-page-indicators"><ul></ul></div>' + '</ul>';
-  $('.books-list').html(books);
-
-
-  //Books Functions
-
-  if( $(window).width() >= 768 ) {
-    $('.page-main .books-nav li.category > a').click(function(e) {
-      console.log($(this).parent());
-      e.preventDefault();
-
-      if ($(this).parent()[0].className == 'category active') {
-        $(this).parent().removeClass('active');
-        $('.page-main .books-nav li.category .child-categories').animate({height: 0}, 200);
-      } else {
-        console.log('categories works');
-        $('.page-main .books-nav li.category').removeClass('active');
-        $('.page-main .books-nav li.category .child-categories').animate({height: 0}, 200);
-
-        $(this).parent().addClass('active');
-        $('.page-main .books-nav li.category.active .child-categories').animate({height: $('.page-main .books-nav li.category.active .child-categories')[0].scrollHeight}, 200);
-      }
-    });
-  } else {
-    //If device width <768px
-
-    $('.books-nav').prepend('<p class="filters">Фільтр по категоріям</p>');
-    $('.books-nav > ul').css('height', $('.category.active').outerHeight());
-    $('.books-nav > ul').css('overflow', 'hidden');
-    $('.books-nav > ul > li:not(.active)').addClass('hidden');
-
-    $('.page-main .books-nav li.category.active > a').click(function(e) {
-      e.preventDefault();
-
-      $('.books-nav > ul > li.hidden').removeClass('hidden');
-      $('.books-nav > ul').animate({height: $('.books-nav > ul')[0].scrollHeight}, 200);
-    });
-
-    $('.page-main .books-nav li.category:not(.active) > a').click(function(e) {
-      e.preventDefault();
-
-      $('.page-main .books-nav li.category.active').removeClass('active');
-      $(this).parent().addClass('active');
-      $('.books-nav > ul > li:not(.active)').addClass('hidden');
-      $('.page-main .books-nav>ul').animate({height: $(this).parent()[0].scrollHeight}, 200);
-    });
-  }
-
+function buildBookBlocks() {
   for(var b = 1; b<7; b++) {
     console.log('book numeration works!');
 
@@ -134,7 +68,7 @@ function buildCategory() {
 
   var bookListPages = Math.ceil($('.books-container .book-block').length/6);
   for (var p = 1; p <= bookListPages; p++) {
-    $('.list-page-indicators ul').append('<li' + ' class="indicator-' + p + '">'+ p + '</li>');
+    $('.list-page-indicators ul').append('<li' + ' class="indicator indicator-' + p + '">'+ p + '</li>');
   }
 
   $('.list-page-indicators li:first-child').addClass('active');
@@ -149,71 +83,31 @@ function buildCategory() {
     $(".list-page-indicators").append('<span class="right is">▶</span>');
   }
 
-  $('.list-page-indicators ul li:not(.dots)').click(function() {
+}
 
-    $('.list-page-indicators ul li:not(.dots)').removeClass('active');
-    $(this).addClass('active');
+function buildCategory() {
 
-    if ($('.list-page-indicators ul li.active').text() > 2) {
-      $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 1 + 2)).removeClass('hidden');
-      $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 2)).addClass('hidden');
+  for(var i=0; i < categories.length; i++) {
+    //console.log(data[i]);
+
+    menu = menu + '<li class="category"><a class="category-title" href="#">' + categories[i].name + '</a>';
+    menu = menu + '<ul class="child-categories">';
+    //console.log(data[i].children.length);
+
+    for(var j=0; j < categories[i].children.length; j++) {
+      menu = menu + '<li class="child-category"><a href="#" class="child-category-title" data-id="'+ categories[i].children[j].tid +'">' + categories[i].children[j].name + '</a></li>';
+
     }
 
-    console.log($(this).text());
-    $('.books-container .book-block').removeClass('num-1');
-    var currentPage = $(this).text();
-    for(var c = (currentPage * 6 - 5); c < (currentPage * 6 + 1) ;c++) {
-        var bookBlock2 = '.books-container .book-block:nth-child(' + c + ')';
-        $(bookBlock2).addClass('num-1');
-    }
-  });
+    menu = menu + '</ul></li>';
+  }
 
-  $('.list-page-indicators .left').click(function() {
-    if ($('.list-page-indicators ul li.active').text() == 1) {
-      return;
-    } else {
-      var currentPage2 = $('.list-page-indicators ul li.active').text();
+  menu = menu + '</ul>';
+  $('.books-nav').html(menu);
 
-      if (currentPage2 > 2) {
-        $('.list-page-indicators ul li.indicator-' + (currentPage2 - 1 + 2)).addClass('hidden');
-        $('.list-page-indicators ul li.indicator-' + (currentPage2 - 2)).removeClass('hidden');
-      }
+  books = books +'<div class="list-page-indicators"><ul></ul></div>' + '</ul>';
+  $('.books-list').html(books);
 
-      $('.list-page-indicators ul li.indicator-' + (currentPage2)).removeClass('active');
-      $('.list-page-indicators ul li.indicator-' + (currentPage2 - 1)).addClass('active');
-      currentPage2 = $('.list-page-indicators ul li.active').text();
-      $('.books-container .book-block').removeClass('num-1');
-
-      for(var d = (currentPage2 * 6 - 5); d < (currentPage2 * 6 + 1) ;d++) {
-        var bookBlock2 = '.books-container .book-block:nth-child(' + d + ')';
-        $(bookBlock2).addClass('num-1');
-      }
-    }
-  });
-
-  $('.list-page-indicators .right').click(function() {
-    if($('.list-page-indicators ul li.active').text() == $('.list-page-indicators ul li:last-child').text()) {
-      return;
-    } else {
-      var currentPage3 = $('.list-page-indicators ul li.active').text();
-
-      if (currentPage3 > 2) {
-        $('.list-page-indicators ul li.indicator-' + (currentPage3 - 1 + 2)).removeClass('hidden');
-        $('.list-page-indicators ul li.indicator-' + (currentPage3 - 2)).addClass('hidden');
-      }
-
-      $('.list-page-indicators ul li.indicator-' + (currentPage3)).removeClass('active');
-      $('.list-page-indicators ul li.indicator-' + (currentPage3 - 1 + 2)).addClass('active');
-      currentPage3 = $('.list-page-indicators ul li.active').text();
-      $('.books-container .book-block').removeClass('num-1');
-
-      for(var f = (currentPage3 * 6 - 5); f < (currentPage3 * 6 + 1) ;f++) {
-        var bookBlock3 = '.books-container .book-block:nth-child(' + f + ')';
-        $(bookBlock3).addClass('num-1');
-      }
-    }
-  });
-  // End of Books functions
 }
 
 
@@ -237,14 +131,169 @@ $(document).ready (function() {
 });
 
 $(document).ajaxStop(function () {
+  if ($('.books-nav > ul').length !== 1) {
     buildBookList();
     buildCategory();
+    buildBookBlocks();
+  }
 });
 
+function initListeners() {
+
+  //Books Functions
+
+  if( $(window).width() >= 768 ) {
+    $(document).on('click', '.page-main .books-nav li.category .category-title', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log($(this).parent());
+      // if ($(this).parent().hasClass('active')) {
+      //   $('.page-main .books-nav li.category.active .child-categories').animate({height: 0}, 200);
+      //   $(this).parent().removeClass('active');
+      // } else {
+      // тут скрывается предыдущая.
+      $('.page-main .books-nav li.category.active .child-categories').animate({height: 0}, 200);
+      // закрывается предыдущая.
+      $('.page-main .books-nav li.category.active').removeClass('active');
+
+      $(this).parent().addClass('active');
+      // открывается текущая? Yes
+      // $('.page-main .books-nav li.category.active .child-categories').animate({height: $('.page-main .books-nav li.category.active .child-categories')[0].scrollHeight}, 200);
+      // copy please
+      $('.page-main .books-nav li.category.active .child-categories').animate({height: $('.page-main .books-nav li.category.active .child-categories')[0].scrollHeight}, 200);
+      // }
+      return;
+    });
+  } else {
+    //If device width <768px
+    $('.books-nav').prepend('<p class="filters">Фільтр по категоріям</p>');
+    $('.books-nav > ul').css('height', $('.category.active').outerHeight());
+    $('.books-nav > ul').css('overflow', 'hidden');
+    // $('.books-nav > ul > li:not(.active)').addClass('hidden');
+
+    $(document).on('click', '.page-main .books-nav li.category.active > a', function(e) {
+      e.preventDefault();
+      console.log('Else doesnt work');
+
+      // $('.books-nav > ul > li.hidden').removeClass('hidden');
+      $('.books-nav > ul').animate({height: $('.books-nav > ul')[0].scrollHeight}, 200);
+    });
+
+    // почему именно li.category:not(.active)? потому что при ширине екрана <768 пкс он меняет свою анимацию
+    // там он немного по другому выпадает, а ок.
+    $(document).on('click', '.page-main .books-nav li.category:not(.active) > .category-title', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      // смотри логика такая: по клику на айтем - убрать предыдщуий эктив, что ты и делаешь, поотом добавить класс на родителя (что раскрыть), дальше скрыть все остальные. и
+      // после этого с анимировать, верно? Да
+      $('.page-main .books-nav li.category.active').removeClass('active');
+      $(this).parent().addClass('active');
+      $('.books-nav > ul > li:not(.active)').addClass('hidden');
+      $('.page-main .books-nav>ul > li.category.active').animate({height: $(this).parent()[0].scrollHeight}, 200);
+    });
+  }
+
+
+  $(document).on('click', '.list-page-indicators .indicator', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $('.list-page-indicators ul li:not(.dots)').removeClass('active');
+    $(this).addClass('active');
+
+    if (parseInt($('.list-page-indicators ul li.active').text()) > 2) {
+      $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() + 1)).removeClass('hidden');
+      $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 2)).addClass('hidden');
+    }
+
+    console.log('indicator which was clicked', $(this).text());
+    $('.books-container .book-block').removeClass('num-1');
+    var currentPage = $(this).text();
+    for(var c = (currentPage * 6 - 5); c < (currentPage * 6 + 1) ;c++) {
+      var bookBlock2 = '.books-container .book-block:nth-child(' + c + ')';
+      $(bookBlock2).addClass('num-1');
+    }
+  });
+
+  $(document).on('click', '.list-page-indicators .left', function(e) {
+
+    e.stopImmediatePropagation();
+    if ($('.list-page-indicators ul li.active').text() == 1) {
+      return;
+    } else {
+      var currentPage2 = $('.list-page-indicators ul li.active').text();
+
+      if (currentPage2 > 2) {
+        $('.list-page-indicators ul li.indicator-' + (currentPage2 - 1 + 2)).addClass('hidden');
+        $('.list-page-indicators ul li.indicator-' + (currentPage2 - 2)).removeClass('hidden');
+      }
+
+      $('.list-page-indicators ul li.indicator-' + (currentPage2)).removeClass('active');
+      $('.list-page-indicators ul li.indicator-' + (currentPage2 - 1)).addClass('active');
+      currentPage2 = $('.list-page-indicators ul li.active').text();
+      $('.books-container .book-block').removeClass('num-1');
+
+      for(var d = (currentPage2 * 6 - 5); d < (currentPage2 * 6 + 1) ;d++) {
+        var bookBlock2 = '.books-container .book-block:nth-child(' + d + ')';
+        $(bookBlock2).addClass('num-1');
+      }
+    }
+  });
+
+  $(document).on('click', $('.books-nav .child-categories .child-category .child-category-title'), function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    console.log('this attr id', e.target);
+
+    var currentCategory = category_json +'/'+ e.target.getAttribute('data-id');
+    console.log(currentCategory);
+    $.getJSON( currentCategory, {format: "json"})
+      .done(function( data ) {
+        console.log('books loaded', data);
+        data = data.books;
+        books ='<li><ul class="books-container">';
+
+        for(var n=0; n < data.length; n++) {
+          books = books + '<li class="book-block"><img src="' + data[n].node.cover.src + '" />';
+          books = books + '<h5>' + data[n].node.title + '</h5>';
+          books = books + '<h6>' + data[n].node.автор + '</h6></li>';
+        }
+
+        books = books + '</ul></li>';
+        books = books +'<div class="list-page-indicators"><ul></ul></div>' + '</ul>';
+        $('.books-list').html(books);
+        buildBookBlocks();
+      });
+  });
+
+  $(document).on('click', '.list-page-indicators .right', function(e) {
+    e.stopImmediatePropagation();
+    if ($('.list-page-indicators ul li.active').text() == $('.list-page-indicators ul li:last-child').text()) {
+      return;
+    } else {
+      var currentPage3 = $('.list-page-indicators ul li.active').text();
+
+      if (currentPage3 > 2) {
+        $('.list-page-indicators ul li.indicator-' + (currentPage3 - 1 + 2)).removeClass('hidden');
+        $('.list-page-indicators ul li.indicator-' + (currentPage3 - 2)).addClass('hidden');
+      }
+
+      $('.list-page-indicators ul li.indicator-' + (currentPage3)).removeClass('active');
+      $('.list-page-indicators ul li.indicator-' + (currentPage3 - 1 + 2)).addClass('active');
+      currentPage3 = $('.list-page-indicators ul li.active').text();
+      $('.books-container .book-block').removeClass('num-1');
+
+      for (var f = (currentPage3 * 6 - 5); f < (currentPage3 * 6 + 1); f++) {
+        var bookBlock3 = '.books-container .book-block:nth-child(' + f + ')';
+        $(bookBlock3).addClass('num-1');
+      }
+    }
+  });
+  // End of Books functions
+}
 
 $(document).ready(function() {
 
-  $('.nav.navbar-nav li a').click(function(e) {
+  $('.page-main .nav.navbar-nav li a').click(function(e) {
     e.preventDefault();
     var target = $(this).attr('href');
     var offsetScroll = $(target).offset().top;
@@ -300,6 +349,85 @@ $(document).ready(function() {
       $(this).addClass('active');
 
     });
+  }
+
+  if ($(window).width() > 768) {
+   $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({cursorborder:"",cursorcolor:"rgba(0, 0, 0, .2)",boxzoom:false});
+  }
+
+
+  //Front Validation
+  $('.page-main #contacts .webform-submit').click(function() {
+    validateEmail('#edit-submitted-email');
+    validateTel('#edit-submitted-tel');
+    validateCompany('#edit-submitted-company');
+    validateNotEmpty('#edit-submitted-name');
+  });
+
+  $('.page-contacts #contacts .webform-submit').click(function() {
+    validateEmail('#edit-submitted-email');
+    validateNotEmpty('#edit-submitted-name');
+  });
+
+
+
+  function validateEmail(emailId) {
+    var emailValue = $(emailId).val();
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(emailValue.length !== 0 && re.test(emailValue)) {
+      $(emailId).css('border', '2px solid #dfdfdf');
+      $(emailId).css('background', '#e9e9e9');
+      $(emailId).css('color', '#dfdfdf');
+      return true;
+    } else {
+      $(emailId).css('border', '2px solid red');
+      $(emailId).attr('placeholder', 'Це поле необхідно заповнити');
+      return false;
+    }
+  }
+
+  function validateTel(telId) {
+    var telValue = $(telId).val().trim();
+    var re = /^((8|0|((\+|00)\d{1,2}))[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+    if(re.test(telValue) ){
+      $(telId).css('border', '2px solid #dfdfdf');
+      $(telId).css('background', '#e9e9e9');
+      $(telId).css('color', '#dfdfdf');
+      return true;
+    } else {
+      $(telId).css('border', '2px solid red');
+      $(telId).attr('placeholder', 'Це поле необхідно заповнити');
+      return false;
+    }
+
+  }
+
+  function validateNotEmpty(id){
+    var value = $(id).val();
+    if( value.length !== 0){
+      $(id).css('border', '2px solid #dfdfdf');
+      $(id).css('background', '#e9e9e9');
+      $(id).css('color', '#dfdfdf');
+      return true;
+    } else {
+      $(id).css('border', '2px solid red');
+      $(id).attr('placeholder', 'Це поле необхідно заповнити');
+      return false
+    }
+  }
+
+  function validateCompany(id){
+    var value = $(id).val();
+    if( value.length !== 0){
+      $(id).css('border', '2px solid #dfdfdf');
+      $(id).css('background', '#e9e9e9');
+      $(id).css('color', '#dfdfdf');
+      return true;
+    } else {
+      $(id).css('border', '2px solid red');
+      $(id).attr('placeholder', 'Це поле необхідно заповнити');
+      return false
+    }
   }
 
 });

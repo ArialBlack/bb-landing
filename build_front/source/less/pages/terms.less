@@ -16,16 +16,41 @@
       padding-bottom: 60px;
       background: @yellow;
 
+      @media (max-width: @max-xs) {
+        padding-top: 150px;
+      }
+
+      .col-md-5.col-sm-3.col-sm-offset-2 {
+        @media (min-width: @max-sm) {
+          margin-left: 0;
+        }
+      }
+
       h1 {
         font-family: gillsans-bold;
         color: @header-text;
         font-size: 60px;
         text-transform: uppercase;
+
+        @media (max-width: @max-xs) {
+          font-size: 45px;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 28px;
+        }
+
+        @media (max-width: 400px) {
+          font-size: 24px;
+        }
       }
 
       img {
         margin-left: 20px;
-        margin-top: -30px;
+
+        @media (max-width: @max-sm) {
+          margin-top: 0;
+        }
       }
     }
 

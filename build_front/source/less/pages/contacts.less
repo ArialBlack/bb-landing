@@ -17,11 +17,23 @@
     padding-bottom: 60px;
     background: @yellow;
 
+    @media (max-width: @max-xs) {
+      padding-top: 150px;
+    }
+
     h1 {
       font-family: gillsans-bold;
       color: @header-text;
       font-size: 60px;
       text-transform: uppercase;
+
+      @media (max-width: 600px) {
+        font-size: 40px;
+      }
+
+      @media (max-width: 400px) {
+        font-size: 35px;
+      }
     }
     h2,
     h3 {
@@ -35,6 +47,11 @@
 
     h3 {
       margin-left: 70px;
+
+      @media (max-width: 1199px) {
+        margin-left: 0;
+        clear: left;
+      }
     }
 
     h2:before {
@@ -62,6 +79,11 @@
     img {
       margin-left: 20px;
       margin-top: -30px;
+
+      @media (max-width: 580px) {
+        float: left;
+        margin-top: 0px;
+      }
     }
   }
 
@@ -98,6 +120,10 @@
 
       .form-item.webform-component {
         width: 48%;
+
+        @media (max-width: @max-xs) {
+          width: 100%;
+        }
       }
 
       .webform-component--name {
@@ -113,6 +139,11 @@
       .webform-component--message {
         float: right;
         margin-top: -94px;
+
+        @media (max-width: @max-xs) {
+          float: left;
+          margin-top: 0;
+        }
 
         #edit-submitted-message {
           height: 160px;
@@ -133,15 +164,19 @@
           font-size: @body-text-n;
           color: #fff;
           background: @red;
-          -webkit-box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.58);
-          -moz-box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.58);
-          box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.58);
+          -webkit-box-shadow: 18px 28px 61px 5px rgba(216,72,48, 0.2);
+          -moz-box-shadow: 18px 28px 61px 5px rgba(216,72,48,0.2);
+          box-shadow: 18px 28px 61px 5px rgba(216,72,48,0.2);
 
           &:hover {
             background: #db553f;
-            -webkit-box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.78);
-            -moz-box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.78);
-            box-shadow: 25px 24px 157px -30px rgba(248,107,84,0.78);
+            -webkit-box-shadow: 18px 28px 61px 5px rgba(216,72,48,0.3);
+            -moz-box-shadow: 18px 28px 61px 5px rgba(216,72,48,0.3);
+            box-shadow: 18px 28px 61px 5px rgba(216,72,48,0.3);
+          }
+
+          @media (max-width: @max-xs) {
+            width: 45%;
           }
         }
       }

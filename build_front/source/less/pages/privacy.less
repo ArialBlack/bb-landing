@@ -16,15 +16,39 @@
       padding-bottom: 60px;
       background: @yellow;
 
+      @media (max-width: @max-xs) {
+        padding-top: 150px;
+      }
+
       h1 {
         font-family: gillsans-bold;
         color: @header-text;
         font-size: 60px;
         text-transform: uppercase;
+
+        @media (max-width: 1199px) {
+          font-size: 46px;
+        }
+
+        @media (max-width: @max-sm) {
+          font-size: 42px;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 28px;
+        }
+
+        @media (max-width: 400px) {
+          font-size: 24px;
+        }
       }
 
       img {
         margin-top: -30px;
+
+        @media (max-width: @max-sm) {
+          margin-top: 0;
+        }
       }
     }
 
