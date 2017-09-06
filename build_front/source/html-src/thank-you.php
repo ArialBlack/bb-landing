@@ -5,7 +5,7 @@ $node = node_load(4);
 <!--(bake parts/head.php)-->
 
 <body class="thank-you-page">
-    <!--(bake parts/nav-and-header.php)-->
+    <!--(bake parts/nav-and-header-2.php)-->
 
     <main>
         <div class="container">

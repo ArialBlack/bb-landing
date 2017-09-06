@@ -60,7 +60,7 @@ function buildBookBlocks() {
   for(var b = 1; b<7; b++) {
     console.log('book numeration works!');
 
-    var bookBlock = '.books-container .book-block:nth-child(' + b + ')';
+    var bookBlock = '#books .books-container .book-block:nth-child(' + b + ')';
     console.log(bookBlock);
 
     $(bookBlock).addClass('num-'+1);
@@ -214,7 +214,7 @@ function initListeners() {
     }
   });
 
-  $(document).on('click', '.list-page-indicators .left', function(e) {
+  $(document).on('click', '#books .list-page-indicators .left', function(e) {
 
     e.stopImmediatePropagation();
     if ($('.list-page-indicators ul li.active').text() == 1) {
@@ -239,7 +239,7 @@ function initListeners() {
     }
   });
 
-  $(document).on('click', $('.books-nav .child-categories .child-category .child-category-title'), function(e) {
+  $(document).on('click', '#books .books-nav .child-categories .child-category .child-category-title', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     console.log('this attr id', e.target);
@@ -355,9 +355,11 @@ $(document).ready(function() {
    $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({cursorborder:"",cursorcolor:"rgba(0, 0, 0, .2)",boxzoom:false});
   }
 
+  $('.page-contacts .collapse.navbar-collapse a').
+
 
   //Front Validation
-  $('.page-main #contacts .webform-submit').click(function() {
+  $(document).on('click', '.page-main .webform-client-form .webform-submit',function() {
     validateEmail('#edit-submitted-email');
     validateTel('#edit-submitted-tel');
     validateCompany('#edit-submitted-company');

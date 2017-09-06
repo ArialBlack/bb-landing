@@ -7,7 +7,7 @@ $node = node_load(51);
 
 <body class="page-terms">
 
-<!--(bake parts/nav-and-header.php)-->
+<!--(bake parts/nav-and-header-2.php)-->
 
 <?php print $messages; ?>
 

@@ -12,7 +12,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 
 <body class="page-contacts">
 
-<!--(bake parts/nav-and-header.php)-->
+<!--(bake parts/nav-and-header-2.php)-->
 
 <?php print $messages; ?>
 

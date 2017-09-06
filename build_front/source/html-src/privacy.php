@@ -7,7 +7,7 @@ $node = node_load(50);
 
 <body class="page-privacy">
 
-<!--(bake parts/nav-and-header.php)-->
+<!--(bake parts/nav-and-header-2.php)-->
 
 <?php print $messages; ?>
 
