@@ -420,7 +420,12 @@ $(document).ready(function() {
   });
 
   if ($(window).width() > 768) {
-   $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({cursorborder:"",cursorcolor:"rgba(0, 0, 0, .2)",boxzoom:false});
+   $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({cursorborder:"",
+     cursorcolor:"rgba(0, 0, 0, .2)",
+     boxzoom:false,
+     spacebarenabled: true,
+     autohidemode: false
+   });
   }
 
   //Front Validation

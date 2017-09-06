@@ -9,64 +9,8 @@
     position: relative;
     height:100vh;
     background: @yellow;
-
-    .intro-line-back,
-    .intro-lamp-back,
-    .intro-human-back {
-      @media (min-width: 768px) {
-        display: none;
-      }
-    }
-
-    .intro-line-back {
-      position: absolute;
-      bottom: 15%;
-      left: -5px;
-      width: 100%;
-
-      @media (max-width: 500px) {
-        bottom: 8%;
-      }
-    }
-
-    .intro-lamp-back {
-      position: absolute;
-      top: -46px;
-      left: 30%;
-      transform: translateX(-70%);
-      height: 30vh;
-      z-index: 12;
-    }
-
-    .intro-human-back {
-      position: absolute;
-      right: -17px;
-      height: 70vh;
-      bottom: 4%;
-
-      @media (max-width: 500px) {
-        bottom: -6%;
-        right: -107px;
-        z-index:12;
-      }
-    }
-
-    @media (max-width: @max-xs) {
-      height: 100vh;
-      background: @yellow;
-      overflow: hidden;
-    }
-
-    .intro-bg-1 {
-      position: absolute;
-      top:0;
-      width: 100%;
-      height: 100vh;
-
-      @media (max-width: @max-xs) {
-        display: none;
-      }
-    }
+    background: url(../../../../default/files/styles/cover/public/bookboxcover.jpg?itok=o0pvEl5k);
+    background-size: cover;
 
     .intro-content {
       position: absolute;
@@ -896,7 +840,7 @@
     h3 {
       padding-bottom: 70px;
       font-family: ubuntu-medium;
-      font-size: @body-text-n;
+      font-size: @header-text;
       color: #ffffff;
     }
 
@@ -1029,7 +973,7 @@
       }
 
       .carousel-inner {
-        height: 452px;
+        height: 300px;
         padding-top: 35px;
         padding-bottom: 70px;
         margin:auto;
@@ -1123,7 +1067,7 @@
           }
 
           &>.field-content {
-            height: 285px;
+            height: 150px;
             overflow-y: hidden;
             padding-top: 40px;
             font-family: ubuntu-medium;

@@ -49,10 +49,6 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 <?php print $messages; ?>
 
 <section id="intro">
-        <img src="<?php print $intro_cover_image; ?>" class="intro-bg-1"/>
-        <img src="sites/all/themes/bookboxlanding_ui/images/intro/lamp.png" class="intro-lamp-back" />
-        <img src="sites/all/themes/bookboxlanding_ui/images/intro/line.png" class="intro-line-back" />
-        <img src="sites/all/themes/bookboxlanding_ui/images/intro/human.png" class="intro-human-back" />
         <div class="intro-content">
           <div class="container">
             <div class="row">
