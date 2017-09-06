@@ -103,7 +103,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
     </div>
 </section>
 
-<section id="price">
+<!-- <section id="price">
     <div class="container">
     <div class="col-md-3 col-sm-3 col-xs-4">
         <h2><mark><?php print $price_title; ?></mark></h2>
@@ -116,7 +116,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
         <h5><?php print $price_notes; ?></h5>
     </div>
     </div>
-</section>
+</section> -->
 
 <section id="partners">
     <div class="container">

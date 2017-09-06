@@ -15,7 +15,6 @@ function getCategory() {
     $.getJSON( category_json, {format: "json"})
         .done(function( data ) {
             categories = data;
-            initListeners();
             for(var i=0; i < categories.length; i++) {
 
                 for(var j=0; j < categories[i].children.length; j++) {
@@ -107,7 +106,7 @@ function buildCategory() {
 
   books = books +'<div class="list-page-indicators"><ul></ul></div>' + '</ul>';
   $('.books-list').html(books);
-
+  initListeners();
 }
 
 
@@ -122,7 +121,7 @@ $(".faq-tab-menu>div.list-group>a").click(function(e) {
 
 $('.panel-collapse').on('shown.bs.collapse', function () {
     $('.faq-tab-content.active .panel-collapse').not(this).removeClass('in');
-})
+});
 
 $(document).ready (function() {
     console.log('run');
@@ -147,49 +146,83 @@ function initListeners() {
       e.preventDefault();
       e.stopPropagation();
       console.log($(this).parent());
-      // if ($(this).parent().hasClass('active')) {
-      //   $('.page-main .books-nav li.category.active .child-categories').animate({height: 0}, 200);
-      //   $(this).parent().removeClass('active');
-      // } else {
+      if ($(this).parent().hasClass('active')) {
+        $('.page-main .books-nav li.category.active .child-categories').animate({height: 0}, 200);
+        $(this).parent().removeClass('active');
+      } else {
       // тут скрывается предыдущая.
       $('.page-main .books-nav li.category.active .child-categories').animate({height: 0}, 200);
       // закрывается предыдущая.
-      $('.page-main .books-nav li.category.active').removeClass('active');
-
+        $('.page-main .books-nav li.category.active .child-categories .child-category-title').removeClass('active');
+        $('.page-main .books-nav li.category.active').removeClass('active');
       $(this).parent().addClass('active');
-      // открывается текущая? Yes
-      // $('.page-main .books-nav li.category.active .child-categories').animate({height: $('.page-main .books-nav li.category.active .child-categories')[0].scrollHeight}, 200);
-      // copy please
       $('.page-main .books-nav li.category.active .child-categories').animate({height: $('.page-main .books-nav li.category.active .child-categories')[0].scrollHeight}, 200);
-      // }
+       }
       return;
+    });
+    $(document).on('click', '.page-main .books-nav li.category.active .child-categories .child-category-title', function() {
+      $('.page-main .books-nav li.category.active .child-categories .child-category-title').removeClass('active');
+      $(this).addClass('active')
     });
   } else {
     //If device width <768px
+
     $('.books-nav').prepend('<p class="filters">Фільтр по категоріям</p>');
-    $('.books-nav > ul').css('height', $('.category.active').outerHeight());
+    $('.books-nav > ul .hits').addClass('category-title');
+    // $('.books-nav > ul').prepend('<li class="hits category"><a href="#">Хіти</a></li>');
+    $('.books-nav > ul > li:not(.active)').addClass('hidden');
+    $('.books-nav > ul').css('height', $('.books-nav .category.active').outerHeight());
     $('.books-nav > ul').css('overflow', 'hidden');
-    // $('.books-nav > ul > li:not(.active)').addClass('hidden');
+    $('.books-nav > ul > li.active >a').css('text-align','right');
 
     $(document).on('click', '.page-main .books-nav li.category.active > a', function(e) {
       e.preventDefault();
-      console.log('Else doesnt work');
+       $('.books-nav > ul > li.hidden').removeClass('hidden');
+      $('.books-nav > ul > li.active:not(.hits) >a').css('text-align','left');
+      if ($('.books-nav li.category').hasClass('hits')) {
 
-      // $('.books-nav > ul > li.hidden').removeClass('hidden');
-      $('.books-nav > ul').animate({height: $('.books-nav > ul')[0].scrollHeight}, 200);
+        if ($('.books-nav > ul').outerHeight() == '55') {
+          $('.books-nav > ul').animate({height: $('.books-nav > ul')[0].scrollHeight}, 200);
+        } else {
+          $('.books-nav > ul').animate({height: '55px'}, 200);
+        }
+
+      } else {
+        $(this).parent().css('height',  (55 + $('.books-nav .category.active .child-categories')[0].scrollHeight) + 10 + 'px');
+        $('.books-nav .category.active .child-categories').css('height', $('.books-nav .category.active .child-categories')[0].scrollHeight + 'px');
+        // $('.books-nav > ul').animate({height: $('.books-nav > ul')[0].scrollHeight}, 200);
+        $('.page-main .books-nav>ul').css('height',$('.page-main .books-nav>ul')[0].scrollHeight  );
+      }
     });
 
-    // почему именно li.category:not(.active)? потому что при ширине екрана <768 пкс он меняет свою анимацию
-    // там он немного по другому выпадает, а ок.
     $(document).on('click', '.page-main .books-nav li.category:not(.active) > .category-title', function(e) {
       e.preventDefault();
       e.stopImmediatePropagation();
-      // смотри логика такая: по клику на айтем - убрать предыдщуий эктив, что ты и делаешь, поотом добавить класс на родителя (что раскрыть), дальше скрыть все остальные. и
-      // после этого с анимировать, верно? Да
+      $('.page-main .books-nav li.category.active').css('height', '55px');
+      $('.page-main .books-nav>ul').css('height',$('.page-main .books-nav>ul').outerHeight() - $('.page-main .books-nav li.category.active .child-categories').outerHeight());
+      $('.page-main .books-nav li.category.active .child-categories').css('height', '0');
       $('.page-main .books-nav li.category.active').removeClass('active');
-      $(this).parent().addClass('active');
+
+      if ($(this).hasClass('hits')) {
+        $(this).parent().addClass('active');
+        $('.page-main .books-nav>ul > li.category.active').css('height', $('.page-main .books-nav>ul > li.category.active')[0].scrollHeight);
+        $('.page-main .books-nav>ul').css('height',$('.page-main .books-nav>ul').outerHeight());
+
+      } else {
+        $(this).parent().addClass('active');
+        $('.page-main .books-nav li.category.active .child-categories').css('height', $('.books-nav .category.active .child-categories')[0].scrollHeight + 'px');
+        $('.page-main .books-nav>ul > li.category.active').css('height', $('.page-main .books-nav>ul > li.category.active')[0].scrollHeight + 10 + 'px');
+        $('.page-main .books-nav>ul').css('height',$('.page-main .books-nav>ul').outerHeight() + $('.page-main .books-nav li.category.active .child-categories').outerHeight());
+      }
+    });
+
+    $(document).on('click','.page-main .books-nav li.category.active .child-categories .child-category a', function() {
       $('.books-nav > ul > li:not(.active)').addClass('hidden');
-      $('.page-main .books-nav>ul > li.category.active').animate({height: $(this).parent()[0].scrollHeight}, 200);
+      // $('.page-main .books-nav li.category.active .child-categories').css('height', '0');
+      // $('.page-main .books-nav li.category.active').css('height', 'inherit');
+      $('.page-main .books-nav>ul').css('height', '55px');
+      $('.books-nav > ul > li.active >a').css('text-align','right');
+
     });
   }
 
@@ -243,7 +276,6 @@ function initListeners() {
     e.preventDefault();
     e.stopImmediatePropagation();
     console.log('this attr id', e.target);
-
     var currentCategory = category_json +'/'+ e.target.getAttribute('data-id');
     console.log(currentCategory);
     $.getJSON( currentCategory, {format: "json"})
@@ -265,7 +297,33 @@ function initListeners() {
       });
   });
 
-  $(document).on('click', '.list-page-indicators .right', function(e) {
+  $(document).on('click', '#books .books-nav .hits', function(e) {
+    e.preventDefault();
+
+    if ($(window).width() >= 768) {
+      $('.page-main .books-nav li.category.active .child-categories').animate({height: 0}, 200);
+      $('.page-main .books-nav li.category.active .child-categories .child-category-title').removeClass('active');
+      $('.page-main .books-nav li.category.active').removeClass('active');
+      $(this).addClass('active');
+    }
+    // else {
+    //   $(this).css('text-aling', 'right');
+    //   $('.page-main .books-nav li.category.active').css('height', '55px');
+    //   $('.page-main .books-nav>ul').css('height',$('.page-main .books-nav>ul').outerHeight() - $('.page-main .books-nav li.category.active .child-categories').outerHeight());
+    //   $('.page-main .books-nav li.category.active .child-categories').css('height', '0');
+    //   $('.page-main .books-nav li.category.active').removeClass('active');
+    //
+    //   $(this).addClass('active');
+    //   $('.page-main .books-nav > ul').css('height', '55px');
+    // }
+    books = '';
+    buildBookList();
+    books = books +'<div class="list-page-indicators"><ul></ul></div>';
+    $('.books-list').html(books);
+    buildBookBlocks();
+  });
+
+    $(document).on('click', '.list-page-indicators .right', function(e) {
     e.stopImmediatePropagation();
     if ($('.list-page-indicators ul li.active').text() == $('.list-page-indicators ul li:last-child').text()) {
       return;
@@ -345,11 +403,21 @@ $(document).ready(function() {
         $(this).parent().addClass('active');
         $('.faq-tab-menu .list-group > div.active > .faq-tab-content').addClass('active');
         $('.faq-tab-menu .list-group > div > .faq-tab-content.active').animate({height: $('.faq-tab-menu .list-group > div > .faq-tab-content.active')[0].scrollHeight}, 400);
+
   }
       $(this).addClass('active');
 
     });
   }
+
+  $('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').click(function() {
+    var offsetFaqHeight = $(this).parent().parent().position().top;
+    console.log(offsetFaqHeight);
+    console.log($(this).parent().parent().parent());
+    console.log($('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').position().top);
+
+    $('.page-main #faq .faq-tab-container .faq-tab .faq-tab-content.active').animate({scrollTop: offsetFaqHeight}, 100);
+  });
 
   if ($(window).width() > 768) {
    $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({cursorborder:"",cursorcolor:"rgba(0, 0, 0, .2)",boxzoom:false});

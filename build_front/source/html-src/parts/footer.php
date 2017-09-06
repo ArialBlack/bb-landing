@@ -6,13 +6,13 @@
         	</div>
         	<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2 text-center read-better">
         		<h1>Read better</h1>
-        		<a href="#">Ми на Facebook</a>
+        		<a href="https://www.facebook.com/bookboxua">Ми на Facebook</a>
         	</div>
         	<div class="col-md-4 col-sm-4 col-xs-4 text-right footer-links">
         		<ul>
-        			<li><a href="http://bookbox.landing/privacy">Політика конфіденційності</a></li>
-        			<li><a href="http://bookbox.landing/terms">Правила користування</a></li>
-        			<li><a href="http://bookbox.landing/contacts">Контакти</a></li>
+        			<li><a href="/privacy">Політика конфіденційності</a></li>
+        			<li><a href="/terms">Правила користування</a></li>
+        			<li><a href="/contacts">Контакти</a></li>
         		</ul>
         	</div>
         </div>

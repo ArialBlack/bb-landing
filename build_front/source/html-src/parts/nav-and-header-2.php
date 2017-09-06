@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/#how">Як це працює</a></li>
                 <li><a href="/#books">Асортимент</a></li>
-                <li><a href="/#price">Вартість</a></li>
+                <!-- <li><a href="/#price">Вартість</a></li> -->
                 <li><a href="/#partners">Клієнти</a></li>
                 <li><a href="/#faq">F.A.Q.</a></li>
             </ul>
