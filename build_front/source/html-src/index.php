@@ -48,7 +48,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 
 <?php print $messages; ?>
 
-<section id="intro">
+<section id="intro" style="background-image: url('<?php print $intro_cover_image; ?>');">
         <div class="intro-content">
           <div class="container">
             <div class="row">
