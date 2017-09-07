@@ -445,6 +445,19 @@
           list-style-type: none;
         }
       }
+      &>li {
+        @media (min-width: 1201px) {
+          height: 820px;
+        }
+
+        @media (max-width: 1200px) and (min-width: 992px) {
+          height: 711px;
+        }
+
+        @media (max-width: @max-sm) and (min-width: 768px){
+          min-height: 750px;
+        }
+      }
 
       .books-container {
         display: flex;
@@ -541,6 +554,8 @@
             font-family: ubuntu-medium;
             color: #fafafa;
             font-size: @body-text-n;
+            max-height: 55px;
+            overflow: hidden;
           }
 
           h6 {
@@ -617,7 +632,7 @@
 
             &.active {
               color: white;
-              background: rgba(0, 0, 0, .14);
+              background: rgba(0, 0, 0, .25);
               border-color: rgba(0, 0, 0, 0);
             }
 
@@ -1376,6 +1391,29 @@
             padding-left: 30px;
             padding-right: 30px;
 
+            .panel-title {
+              position: relative;
+
+              &:after {
+                content: '▼';
+                font-family: gillsans-bold;
+                position: absolute;
+                top: 6px;
+                right: 0;
+                color: @header-text;
+                transform: rotate( 0deg );
+                -webkit-transition: rotate .4s ease;
+                -moz-transition: rotate .4s ease;
+                -ms-transition: rotate .4s ease;
+                -o-transition: rotate .4s ease;
+                transition: rotate .4s ease;
+
+                .rotate {
+                  transform: rotate( 180deg );
+                }
+              }
+            }
+
             a {
               font-family: gillsans-bold;
               color: @header-text;
@@ -1628,6 +1666,7 @@
           clear: both;
 
           button {
+            border-color: @red !important;
             border-radius: 0;
             height: 70px;
             width: 25%;

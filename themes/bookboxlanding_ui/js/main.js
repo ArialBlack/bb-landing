@@ -1,7 +1,7 @@
 var category_json = 'http://new.bookbox.ua/json/category',
     hits_json = 'http://new.bookbox.ua/json/hits',
     menu = '<ul><li class="hits category active"><a href="#">Хіти</a></li>',
-    books = '<ul>',
+    books = '',
     categories,
     hits;
 
@@ -83,6 +83,14 @@ function buildBookBlocks() {
   }
 }
 
+function checkBookName() {
+  for(var tb = 0; tb<$('.books-container .book-block').length; tb++) {
+    if ($('book-block h5').text().length > 32) {
+      $(this).substr(33, $('book-block h5').text().length);
+    }
+  }
+}
+
 function buildCategory() {
 
   for(var i=0; i < categories.length; i++) {
@@ -103,7 +111,7 @@ function buildCategory() {
   menu = menu + '</ul>';
   $('.books-nav').html(menu);
 
-  books = books +'<div class="list-page-indicators"><ul></ul></div>' + '</ul>';
+  books = books +'<div class="list-page-indicators"><ul></ul></div>';
   $('.books-list').html(books);
   initListeners();
 }
@@ -449,15 +457,15 @@ $(document).ready(function() {
     }
   });
 
-  $('.front-modal button').on('click', function(e) {
+  $('.front-modal button').on("hidden.bs.modal", function () {
     $('#webform-client-form-48').submit();
   });
 
-  $('.page-main #contacts .webform-component input, .page-main #contacts .webform-component textarea').click(function() {
-    $('.page-main #contacts .webform-component input, .page-main #contacts .webform-component textarea').css('border','1px solid #ccc');
+  $('.page-main #contacts .webform-component input, .page-main #contacts .webform-component textarea, .page-contacts #contacts .webform-component input, .page-main #contacts .page-contacts textarea').click(function() {
     $(this).css('border','1px solid #ccc');
     $(this).css('border-bottom',' 3px solid #f9d35c');
     $(this).css('background','#fff');
+    $(this).css('color','#2e2e2e');
     // $(this).attr('placeholder', ' ');
   });
 
@@ -470,7 +478,7 @@ $(document).ready(function() {
     }
   });
 
-  $('.contacts-modal button').on('click', function(e) {
+  $(".contacts-modal button").on("hidden.bs.modal", function () {
     $('#webform-client-form-49').submit();
   });
 
@@ -561,6 +569,7 @@ $(document).ready(function() {
     }
   }
 
+
   $(document).ajaxStop(function () {
     if ($(window).width() > 768) {
       // $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll();
@@ -577,6 +586,10 @@ $(document).ready(function() {
     }
   });
 
+  // setTimeout(function() {
+  //   console.log($('.book-block:first-child h2').innerHTML);
+  //   console.log('heloo, its book block');
+  // },8000);
 
   // function validateButtons(id){
   //   var value = $(id).val();
@@ -591,5 +604,20 @@ $(document).ready(function() {
   //     return false
   //   }
   // }
-
+  //
+  // console.log('Message 1');
+  //
+  // var faqActiveBlocks = '.faq-tab>.faq-tab-content';
+  // for(var faqnum = 0; faqnum<= faqActiveBlocks.eq(index).children('.panel.panel-default').length; faqnum++) {
+  //   console.log('Message 2');
+  //   $('.faq-tab>.faq-tab-content.active .panel-group .panel.panel-default:nth-child('+ faqnum +') .panel-title').append('<div class="arrow">▼</div>');
+  //
+  //   if($('.faq-tab>.faq-tab-content.active .panel-group .panel.panel-default:nth-child('+ faqnum +') .panel-collapse').hasClass('in')) {
+  //     console.log($('.faq-tab>.faq-tab-content.active .panel-group .panel.panel-default:nth-child('+ faqnum +') .panel-collapse').hasClass('in'));
+  //     $('.faq-tab>.faq-tab-content.active .panel-group .panel.panel-default:nth-child('+ faqnum +') .panel-title .arrow').addClass('rotate');
+  //   } else {
+  //     // console.log($('.faq-tab>.faq-tab-content.active .panel-group .panel.panel-default:nth-child('+ faqnum +') .panel-collapse').hasClass('in'));
+  //     $('.faq-tab>.faq-tab-content.active .panel-group .panel.panel-default:nth-child('+ faqnum +') .panel-title .arrow').removeClass('rotate');
+  //   }
+  // }
 });
