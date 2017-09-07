@@ -1,5 +1,5 @@
-var category_json = 'http://new.bookbox.ua/json/category',
-    hits_json = 'http://new.bookbox.ua/json/hits',
+var category_json = 'https://lib.bookbox.ua/json/category',
+    hits_json = 'https://lib.bookbox.ua/json/hits',
     menu = '<ul><li class="hits category active"><a href="#">Хіти</a></li>',
     books = '',
     categories,
@@ -19,17 +19,15 @@ function getCategory() {
 
                 for(var j=0; j < categories[i].children.length; j++) {
                     var tid_json = category_json + '/' + categories[i].children[j].tid;
-                    console.log(categories[i].children[j].name);
+                    //console.log(categories[i].children[j].name);
 
                     $.getJSON( tid_json, {format: "json", async: false})
                         .done(function( data0 ) {
 
                             if(data0.books.length > 0) {
-                                console.log(data0.books);
+                                //console.log(data0.books);
                             }
                         });
-
-                    console.log('----------');
                 }
             }
         });
@@ -39,7 +37,7 @@ function getHits() {
     $.getJSON( hits_json, {format: "json"})
        .done(function( data0 ) {
            hits = data0.hits;
-           console.log(hits)
+           //console.log(hits)
        });
 }
 
@@ -57,10 +55,10 @@ function buildBookList() {
 
 function buildBookBlocks() {
   for(var b = 1; b<7; b++) {
-    console.log('book numeration works!');
+    //console.log('book numeration works!');
 
     var bookBlock = '#books .books-container .book-block:nth-child(' + b + ')';
-    console.log(bookBlock);
+    //console.log(bookBlock);
 
     $(bookBlock).addClass('num-'+1);
     checkBookName();
@@ -88,7 +86,7 @@ function checkBookName() {
   for(var tb = 0; tb<$('.books-container .book-block').length; tb++) {
     // console.log('checking book name');
     if ($('.book-block:nth-child('+ tb +' ) h5').text().length > 32) {
-      console.log('book name is too long');
+      //console.log('book name is too long');
       var newBookName = $('.book-block:nth-child('+ tb +' ) h5').text().substr(0, 31);
       $('.book-block:nth-child('+ tb +' ) h5').text(newBookName + '...');
     }
@@ -148,7 +146,7 @@ $('.panel-collapse').on('shown.bs.collapse', function () {
 });
 
 $(document).ready (function() {
-    console.log('run');
+    //console.log('run');
 
     getRequests();
 });
@@ -169,7 +167,7 @@ function initListeners() {
     $(document).on('click', '.page-main .books-nav li.category .category-title', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log($(this).parent());
+      //console.log($(this).parent());
       if ($(this).parent().hasClass('active')) {
         $('.page-main .books-nav li.category.active .child-categories').animate({height: 0}, 200);
         $(this).parent().removeClass('active');
@@ -255,14 +253,14 @@ function initListeners() {
     e.preventDefault();
     e.stopImmediatePropagation();
     var previousInd = parseInt($('.list-page-indicators ul li.active').text());
-    console.log(previousInd);
+    //console.log(previousInd);
     $('.list-page-indicators ul li:not(.dots)').removeClass('active');
     $(this).addClass('active');
 
     if (parseInt($('.list-page-indicators ul li.active').text()) >= 2) {
       if($('.list-page-indicators ul li').length > 4) {
         if (parseInt($('.list-page-indicators ul li.active').text()) > previousInd) {
-          console.log('click plus');
+          //console.log('click plus');
           $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 1 + 2)).removeClass('hidden');
           $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 2)).addClass('hidden');
           $('.list-page-indicators ul li:last-child').removeClass('hidden');
@@ -274,7 +272,7 @@ function initListeners() {
             $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 2)).removeClass('hidden');
           }
         }  else if (parseInt($('.list-page-indicators ul li.active').text()) < previousInd) {
-          console.log('click plus');
+          //console.log('click plus');
           $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 2 + 1)).removeClass('hidden');
           $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 1 + 3)).addClass('hidden');
           $('.list-page-indicators ul li.indicator-' + ($('.list-page-indicators ul li.active').text() - 1 + 4)).addClass('hidden');
@@ -283,7 +281,7 @@ function initListeners() {
       }
     }
 
-    console.log('indicator which was clicked', $(this).text());
+    //console.log('indicator which was clicked', $(this).text());
     $('.books-container .book-block').removeClass('num-1');
     var currentPage = $(this).text();
     for(var c = (currentPage * 6 - 5); c < (currentPage * 6 + 1) ;c++) {
@@ -359,12 +357,12 @@ function initListeners() {
   $(document).on('click', '#books .books-nav .child-categories .child-category .child-category-title', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
-    console.log('this attr id', e.target);
+    //console.log('this attr id', e.target);
     var currentCategory = category_json +'/'+ e.target.getAttribute('data-id');
-    console.log(currentCategory);
+    //console.log(currentCategory);
     $.getJSON( currentCategory, {format: "json"})
       .done(function( data ) {
-        console.log('books loaded', data);
+        //console.log('books loaded', data);
         data = data.books;
         books ='<li><ul class="books-container">';
 
@@ -442,7 +440,7 @@ $(document).ready(function() {
   if ($(window).width() < 768) {
     var faqCount = $('.faq-tab-menu .list-group > a').length;
     for(var s = 0; s < faqCount; s++) {
-      console.log('.page-main .faq-tab-menu .list-group-item:nth-child(' + (s - 1 + 2) +')' + ' add ' + '.page-main .faq-tab #tab-id-' + s );
+      //console.log('.page-main .faq-tab-menu .list-group-item:nth-child(' + (s - 1 + 2) +')' + ' add ' + '.page-main .faq-tab #tab-id-' + s );
       $('.faq-tab-menu .list-group').append('<div class="faq-inner-block-' + (s - 1 + 2) +'">');
       $('.faq-tab-menu .list-group .faq-inner-block-' + (s - 1 + 2)).append($('.page-main .faq-tab #tab-id-' + s));
     }
@@ -476,9 +474,9 @@ $(document).ready(function() {
 
   $('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').click(function() {
     var offsetFaqHeight = $(this).parent().parent().position().top;
-    console.log(offsetFaqHeight);
-    console.log($(this).parent().parent().parent());
-    console.log($('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').position().top);
+    ///console.log(offsetFaqHeight);
+    //console.log($(this).parent().parent().parent());
+    //console.log($('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').position().top);
     $('.page-main #faq .faq-tab-container .faq-tab .faq-tab-content.active').animate({scrollTop: offsetFaqHeight}, 100);
     setTimeout(function() {    $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();}, 200);
   });
