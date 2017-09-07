@@ -469,7 +469,9 @@ $(document).ready(function() {
     // $(this).attr('placeholder', ' ');
   });
 
-  $('#webform-client-form-49 .webform-submit').click(function() {
+  $('#webform-client-form-49 .webform-submit').on('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
     var email = validateEmail('#edit-submitted-email');
     var text = validateNotEmpty('#edit-submitted-name');
 
