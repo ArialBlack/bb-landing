@@ -16,6 +16,7 @@ $node = node_load(50);
         <div class="container">
           <div class="row">
             <div class="col-md-8 col-sm-8">
+            <div class="bread-crumbs"><p class="to-main"><a href="/">Головна</a></p><span class="bread-arrow">▶</span><p class="current"><?php print $node->title; ?></p></div>
               <h1><?php print $node->title; ?></h1>
             </div>
             <div class="col-md-4 col-sm-4">

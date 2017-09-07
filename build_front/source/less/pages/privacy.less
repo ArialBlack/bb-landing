@@ -1,6 +1,40 @@
 .page-privacy {
   background: @bg-color;
 
+  .bread-crumbs {
+    p.to-main, span {
+      float: left;
+    }
+
+    .to-main a {
+      font-family:ubuntu-medium;
+      color: @header-text-2;
+      font-size: @menu-text;
+      text-transform: uppercase;
+      -webkit-transition: color .4s ease;
+      -moz-transition: color .4s ease;
+      -ms-transition: color .4s ease;
+      -o-transition: color .4s ease;
+      transition: color .4s ease;
+
+      &:hover {
+        color: @header-text;
+      }
+    }
+
+    span {
+      color: @red;
+      padding:0 8px;
+    }
+
+    .current {
+      font-family:ubuntu-medium;
+      color: @header-text-2;
+      font-size: @menu-text;
+      text-transform: uppercase;
+    }
+  }
+
   #privacy {
     position: relative;
 
@@ -44,7 +78,7 @@
       }
 
       img {
-        margin-top: -30px;
+        margin-top: 20px;
 
         @media (max-width: @max-sm) {
           margin-top: 0;

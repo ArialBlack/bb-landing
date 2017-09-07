@@ -81,7 +81,6 @@ function buildBookBlocks() {
     $(".list-page-indicators").prepend('<span class="left">◀</span>');
     $(".list-page-indicators").append('<span class="right is">▶</span>');
   }
-
 }
 
 function buildCategory() {
@@ -109,6 +108,19 @@ function buildCategory() {
   initListeners();
 }
 
+// function changeFaqColor() {
+//   console.log($('.faq-tab-content.active .panel.panel-default:nth-child(2)').height);
+//   var faqIndex =$('.faq-tab .faq-tab-content.active .panel.panel-default');
+//   for (var faqCount = 1; faqCount <= faqIndex.length; faqCount++) {
+//     if ($('.faq-tab-content.active .panel.panel-default:nth-child('+ faqCount +')').outerHeight > 2000) {
+//       $('.faq-tab-content.active .panel.panel-default:nth-child .panel-heading').css('opacity', '.6');
+//       $('.faq-tab-content.active .panel.panel-default:nth-child('+ faqCount +') .panel-heading').css('opacity', '1');
+//     } else {
+//       $('.faq-tab-content.active .panel.panel-default:nth-child('+ faqCount +') .panel-heading').css('opacity', '1');
+//     }
+//   }
+// }
+
 
 $(".faq-tab-menu>div.list-group>a").click(function(e) {
     e.preventDefault();
@@ -134,11 +146,11 @@ $(document).ajaxStop(function () {
     buildBookList();
     buildCategory();
     buildBookBlocks();
+
   }
 });
 
 function initListeners() {
-
   //Books Functions
 
   if( $(window).width() >= 768 ) {
@@ -346,6 +358,8 @@ function initListeners() {
       }
     }
   });
+
+
   // End of Books functions
 }
 
@@ -410,30 +424,47 @@ $(document).ready(function() {
     });
   }
 
+
   $('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').click(function() {
     var offsetFaqHeight = $(this).parent().parent().position().top;
     console.log(offsetFaqHeight);
     console.log($(this).parent().parent().parent());
     console.log($('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').position().top);
-
     $('.page-main #faq .faq-tab-container .faq-tab .faq-tab-content.active').animate({scrollTop: offsetFaqHeight}, 100);
+    setTimeout(function() {    $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();}, 200);
   });
 
+
   if ($(window).width() > 768) {
-   $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({cursorborder:"",
-     cursorcolor:"rgba(0, 0, 0, .2)",
-     boxzoom:false,
-     spacebarenabled: true,
-     autohidemode: false
-   });
-  }
+      // $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll();
+      $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();
+      $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({
+        cursorborder:"",
+        cursorcolor:"rgba(0, 0, 0, .4)",
+        background: "rgba(0, 0, 0, .2)",
+        railoffset: true,
+        boxzoom:false,
+        spacebarenabled: true,
+        autohidemode: false
+      });
+    }
 
   //Front Validation
   $('.page-main #contacts .webform-submit').click(function() {
     validateEmail('#edit-submitted-email');
     validateTel('#edit-submitted-tel');
     validateCompany('#edit-submitted-company');
+    validateTextField('#edit-submitted-message');
     validateNotEmpty('#edit-submitted-name');
+    validateButtons('#edit-submitted-employers-1');
+  });
+
+  $('.page-main #contacts .webform-component input, .page-main #contacts .webform-component textarea').click(function() {
+    $('.page-main #contacts .webform-component input, .page-main #contacts .webform-component textarea').css('border','1px solid #ccc');
+    $(this).css('border','1px solid #ccc');
+    $(this).css('border-bottom',' 3px solid #f9d35c');
+    $(this).css('background','#fff');
+    // $(this).attr('placeholder', ' ');
   });
 
   $('.page-contacts #contacts .webform-submit').click(function() {
@@ -452,7 +483,8 @@ $(document).ready(function() {
       $(emailId).css('color', '#dfdfdf');
       return true;
     } else {
-      $(emailId).css('border', '2px solid red');
+      $(emailId).css('border', '2px solid #db553f');
+      $(emailId).css('background', 'rgba(255, 0, 0, .06)');
       $(emailId).attr('placeholder', 'Це поле необхідно заповнити');
       return false;
     }
@@ -467,7 +499,8 @@ $(document).ready(function() {
       $(telId).css('color', '#dfdfdf');
       return true;
     } else {
-      $(telId).css('border', '2px solid red');
+      $(telId).css('border', '2px solid #db553f');
+      $(telId).css('background', 'rgba(255, 0, 0, .06)');
       $(telId).attr('placeholder', 'Це поле необхідно заповнити');
       return false;
     }
@@ -482,7 +515,8 @@ $(document).ready(function() {
       $(id).css('color', '#dfdfdf');
       return true;
     } else {
-      $(id).css('border', '2px solid red');
+      $(id).css('border', '2px solid #db553f');
+      $(id).css('background', 'rgba(255, 0, 0, .06)');
       $(id).attr('placeholder', 'Це поле необхідно заповнити');
       return false
     }
@@ -496,10 +530,40 @@ $(document).ready(function() {
       $(id).css('color', '#dfdfdf');
       return true;
     } else {
-      $(id).css('border', '2px solid red');
+      $(id).css('border', '2px solid #db553f');
+      $(id).css('background', 'rgba(255, 0, 0, .06)');
       $(id).attr('placeholder', 'Це поле необхідно заповнити');
       return false
     }
   }
+
+  function validateTextField(id){
+    var value = $(id).val();
+    if( value.length !== 0){
+      $(id).css('border', '2px solid #dfdfdf');
+      $(id).css('background', '#e9e9e9');
+      $(id).css('color', '#dfdfdf');
+      return true;
+    } else {
+      $(id).css('border', '2px solid #db553f');
+      $(id).css('background', 'rgba(255, 0, 0, .06)');
+      $(id).attr('placeholder', 'Це поле необхідно заповнити');
+      return false
+    }
+  }
+
+  // function validateButtons(id){
+  //   var value = $(id).val();
+  //   if( value.length !== 0){
+  //     $(id).parent().css('border', '2px solid red');
+  //     $(id).parent().css('background', '#e9e9e9');
+  //     $(id).parent().css('color', '#dfdfdf');
+  //     return true;
+  //   } else {
+  //     $(id).parent().css('border', '2px solid #db553f');
+  //     $(id).parent().css('background', 'rgba(255, 0, 0, .06)');
+  //     return false
+  //   }
+  // }
 
 });

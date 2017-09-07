@@ -22,6 +22,8 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 		<div class="container">
 		  <div class="row">
 		    <div class="col-md-7 col-sm-7">
+        <div class="bread-crumbs"><p class="to-main"><a href="/">Головна</a></p><span class="bread-arrow">▶</span><p class="current">Контакти</p></div>
+
           <h1>Контакти</h1>
           <h2><?php print $form_title; ?></h2>
           <h3><?php print $form_subtitle; ?></h3>
