@@ -424,7 +424,6 @@ $(document).ready(function() {
     });
   }
 
-
   $('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').click(function() {
     var offsetFaqHeight = $(this).parent().parent().position().top;
     console.log(offsetFaqHeight);
@@ -434,29 +433,24 @@ $(document).ready(function() {
     setTimeout(function() {    $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();}, 200);
   });
 
-
-  if ($(window).width() > 768) {
-      // $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll();
-      $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();
-      $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({
-        cursorborder:"",
-        cursorcolor:"rgba(0, 0, 0, .4)",
-        background: "rgba(0, 0, 0, .2)",
-        railoffset: true,
-        boxzoom:false,
-        spacebarenabled: true,
-        autohidemode: false
-      });
-    }
-
   //Front Validation
-  $('.page-main #contacts .webform-submit').click(function() {
-    validateEmail('#edit-submitted-email');
-    validateTel('#edit-submitted-tel');
-    validateCompany('#edit-submitted-company');
-    validateTextField('#edit-submitted-message');
-    validateNotEmpty('#edit-submitted-name');
-    validateButtons('#edit-submitted-employers-1');
+  $('#webform-client-form-48 .webform-submit').on('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var email = validateEmail('#edit-submitted-email');
+    var tel = validateTel('#edit-submitted-tel');
+    var company = validateCompany('#edit-submitted-company');
+    var text = validateTextField('#edit-submitted-message');
+    var name = validateNotEmpty('#edit-submitted-name');
+    //var buttons = validateButtons('#edit-submitted-employers-1');
+
+    if ( email && tel && company && text && name) {
+      $('.front-modal').modal();
+    }
+  });
+
+  $('.front-modal button').on('click', function(e) {
+    $('#webform-client-form-48').submit();
   });
 
   $('.page-main #contacts .webform-component input, .page-main #contacts .webform-component textarea').click(function() {
@@ -467,15 +461,22 @@ $(document).ready(function() {
     // $(this).attr('placeholder', ' ');
   });
 
-  $('.page-contacts #contacts .webform-submit').click(function() {
-    validateEmail('#edit-submitted-email');
-    validateNotEmpty('#edit-submitted-name');
+  $('#webform-client-form-49 .webform-submit').click(function() {
+    var email = validateEmail('#edit-submitted-email');
+    var text = validateNotEmpty('#edit-submitted-name');
+
+    if ( email && text) {
+      $('.contacts-modal').modal();
+    }
   });
 
-
+  $('.contacts-modal button').on('click', function(e) {
+    $('#webform-client-form-49').submit();
+  });
 
   function validateEmail(emailId) {
     var emailValue = $(emailId).val();
+
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(emailValue.length !== 0 && re.test(emailValue)) {
       $(emailId).css('border', '2px solid #dfdfdf');
@@ -483,10 +484,18 @@ $(document).ready(function() {
       $(emailId).css('color', '#dfdfdf');
       return true;
     } else {
-      $(emailId).css('border', '2px solid #db553f');
-      $(emailId).css('background', 'rgba(255, 0, 0, .06)');
-      $(emailId).attr('placeholder', 'Це поле необхідно заповнити');
-      return false;
+      if(emailValue.length < 1) {
+        $(emailId).attr('placeholder', 'Це поле необхідно заповнити');
+        $(emailId).css('border', '2px solid #db553f');
+        $(emailId).css('background', 'rgba(255, 0, 0, .06)');
+        return false;
+      }
+      if(!re.test(emailValue)) {
+        $(emailId).attr('placeholder', 'Введіть дійсний email');
+        $(emailId).css('border', '2px solid #db553f');
+        $(emailId).css('background', 'rgba(255, 0, 0, .06)');
+        return false;
+      }
     }
   }
 
@@ -551,6 +560,23 @@ $(document).ready(function() {
       return false
     }
   }
+
+  $(document).ajaxStop(function () {
+    if ($(window).width() > 768) {
+      // $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll();
+      $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();
+      $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({
+        cursorborder:"",
+        cursorcolor:"rgba(0, 0, 0, .4)",
+        background: "rgba(0, 0, 0, .2)",
+        railoffset: true,
+        boxzoom:false,
+        spacebarenabled: true,
+        autohidemode: false
+      });
+    }
+  });
+
 
   // function validateButtons(id){
   //   var value = $(id).val();
