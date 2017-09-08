@@ -427,6 +427,13 @@ $(document).ready(function() {
     $('html, body').animate( { scrollTop:  offsetScroll}, 1400);
   });
 
+  $('.scroll-to-2').click(function(e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+    var offsetScroll = $(target).offset().top;
+    $('html, body').animate( { scrollTop:  offsetScroll}, 1400);
+  });
+
   $('.webform-component--employers .form-item-submitted-employers .control-label').click(function() {
     $('.webform-component--employers .form-item-submitted-employers .control-label').removeClass('active');
     $(this).addClass('active');

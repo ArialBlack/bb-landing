@@ -56,7 +56,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
             </div>
             <div class="row">
               <div class="col-md-3 col-sm-5 col-xs-5">
-                <a class="btn btn-danger" href="#order">Замовити</a>
+                <a class="btn btn-danger scroll-to-2" href="#contacts">Замовити</a>
               </div>
             </div>
           </div>
