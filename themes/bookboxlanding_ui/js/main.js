@@ -490,6 +490,7 @@ $(document).ready(function() {
     var company = validateCompany('#edit-submitted-company');
     var text = validateTextField('#edit-submitted-message');
     var name = validateNotEmpty('#edit-submitted-name');
+    validateButtons('#edit-submitted-office');
     //var buttons = validateButtons('#edit-submitted-employers-1');
 
     if ( email && tel && company && text && name) {
@@ -501,7 +502,7 @@ $(document).ready(function() {
     $('#webform-client-form-48').submit();
   });
 
-  $('.page-main #contacts .webform-component input, .page-main #contacts .webform-component textarea, .page-contacts #contacts .webform-component input, .page-main #contacts .page-contacts textarea').click(function() {
+  $('.page-main #contacts .webform-component input, .page-main #contacts .webform-component textarea, .page-contacts #contacts .webform-component input, .page-contacts textarea').click(function() {
     $(this).css('border','1px solid #ccc');
     $(this).css('border-bottom',' 3px solid #f9d35c');
     $(this).css('background','#fff');
@@ -513,7 +514,8 @@ $(document).ready(function() {
     e.preventDefault();
     e.stopPropagation();
     var email = validateEmail('#edit-submitted-email');
-    var text = validateNotEmpty('#edit-submitted-name');
+    var name = validateNotEmpty('#edit-submitted-name');
+    validateTextField('#edit-submitted-message');
 
     if ( email && text) {
       $('.contacts-modal').modal();
@@ -540,10 +542,12 @@ $(document).ready(function() {
         $(emailId).css('background', 'rgba(255, 0, 0, .06)');
         return false;
       }
-      if(!re.test(emailValue)) {
+      if(!re.test(emailValue) && emailValue.length > 1) {
         $(emailId).attr('placeholder', 'Введіть дійсний email');
         $(emailId).css('border', '2px solid #db553f');
         $(emailId).css('background', 'rgba(255, 0, 0, .06)');
+        document.getElementById('edit-submitted-email').value='';
+        // $(emailId).text(' ');
         return false;
       }
     }
@@ -552,18 +556,25 @@ $(document).ready(function() {
   function validateTel(telId) {
     var telValue = $(telId).val().trim();
     var re = /^((8|0|((\+|00)\d{1,2}))[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
-    if(re.test(telValue) ){
+    if(telValue.length !== 0 && re.test(telValue)){
       $(telId).css('border', '2px solid #dfdfdf');
       $(telId).css('background', '#e9e9e9');
       $(telId).css('color', '#dfdfdf');
       return true;
     } else {
-      $(telId).css('border', '2px solid #db553f');
-      $(telId).css('background', 'rgba(255, 0, 0, .06)');
-      $(telId).attr('placeholder', 'Це поле необхідно заповнити');
-      return false;
+      if(telValue.length < 1) {
+        $(telId).css('border', '2px solid #db553f');
+        $(telId).css('background', 'rgba(255, 0, 0, .06)');
+        $(telId).attr('placeholder', 'Це поле необхідно заповнити');
+        return false;
+      }
+      if(!re.test(telValue) && telValue.length > 1) {
+        $(telId).css('border', '2px solid #db553f');
+        $(telId).css('background', 'rgba(255, 0, 0, .06)');
+        document.getElementById('edit-submitted-tel').value='';
+        $(telId).attr('placeholder', 'Можемо запрограмувати формат 380---------');
+      }
     }
-
   }
 
   function validateNotEmpty(id){
@@ -611,6 +622,15 @@ $(document).ready(function() {
     }
   }
 
+  $(document).ready(function() {
+    if ($(window).width() < 768) {
+      $($('.nav.navbar-nav a'). on('click', function() {
+        $('.navbar-collapse.collapse.in').removeClass('in');
+        $('.navbar-toggle').addClass('collapsed');
+      })
+      );
+    }
+  });
 
   $(document).ajaxStop(function () {
     if ($(window).width() > 768) {
@@ -632,9 +652,9 @@ $(document).ready(function() {
   //   console.log($('.book-block:first-child h2').innerHTML);
   //   console.log('heloo, its book block');
   // },8000);
-
+  //
   // function validateButtons(id){
-  //   var value = $(id).val();
+  //   var value = $(id + ' input').val();
   //   if( value.length !== 0){
   //     $(id).parent().css('border', '2px solid red');
   //     $(id).parent().css('background', '#e9e9e9');
@@ -646,7 +666,7 @@ $(document).ready(function() {
   //     return false
   //   }
   // }
-  //
+
   // console.log('Message 1');
   //
   // var faqActiveBlocks = '.faq-tab>.faq-tab-content';

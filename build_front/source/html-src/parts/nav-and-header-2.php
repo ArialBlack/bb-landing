@@ -29,6 +29,10 @@
                 <!-- <li><a href="/#price">Вартість</a></li> -->
                 <li><a href="/#partners">Клієнти</a></li>
                 <li><a href="/#faq">F.A.Q.</a></li>
+                 <div class="mob">
+                    <li><a href="https://lib.bookbox.ua/user" class="login">Вхід</a></li>
+                    <li><a href="https://lib.bookbox.ua/user/register" class="reg">Реєстрація</a></li>
+                  </div>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
