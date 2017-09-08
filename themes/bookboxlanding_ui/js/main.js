@@ -530,7 +530,8 @@ $(document).ready(function() {
     }
   });
 
-  $(".contacts-modal button").on("hidden.bs.modal", function () {
+  $(".modal.fade.contacts-modal").on("hidden.bs.modal", function () {
+    console.log('send data of contacts-page');
     $('#webform-client-form-49').submit();
   });
 
