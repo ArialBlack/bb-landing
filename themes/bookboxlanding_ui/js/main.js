@@ -505,7 +505,8 @@ $(document).ready(function() {
     }
   });
 
-  $('.front-modal button').on("hidden.bs.modal", function () {
+  $('.modal.fade.front-modal').on("hidden.bs.modal", function () {
+    console.log('works the send of data');
     $('#webform-client-form-48').submit();
   });
 
@@ -579,7 +580,7 @@ $(document).ready(function() {
         $(telId).css('border', '2px solid #db553f');
         $(telId).css('background', 'rgba(255, 0, 0, .06)');
         document.getElementById('edit-submitted-tel').value='';
-        $(telId).attr('placeholder', 'Можемо запрограмувати формат 380XXXXXXXXX');
+        $(telId).attr('placeholder', 'Введіть телефон у форматі 380ХХХХХХХХХ');
       }
     }
   }
