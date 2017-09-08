@@ -490,10 +490,10 @@ $(document).ready(function() {
     var company = validateCompany('#edit-submitted-company');
     var text = validateTextField('#edit-submitted-message');
     var name = validateNotEmpty('#edit-submitted-name');
-    validateButtons('#edit-submitted-office');
-    //var buttons = validateButtons('#edit-submitted-employers-1');
+    var buttons1 = validateButtons('#edit-submitted-office');
+    var buttons2 = validateButtons('#edit-submitted-employers');
 
-    if ( email && tel && company && text && name) {
+    if ( email && tel && company && text && name && buttons1 && buttons2) {
       $('.front-modal').modal();
     }
   });
@@ -515,9 +515,9 @@ $(document).ready(function() {
     e.stopPropagation();
     var email = validateEmail('#edit-submitted-email');
     var name = validateNotEmpty('#edit-submitted-name');
-    validateTextField('#edit-submitted-message');
+    var text = validateTextField('#edit-submitted-message');
 
-    if ( email && text) {
+    if ( email && name && text) {
       $('.contacts-modal').modal();
     }
   });
@@ -572,7 +572,7 @@ $(document).ready(function() {
         $(telId).css('border', '2px solid #db553f');
         $(telId).css('background', 'rgba(255, 0, 0, .06)');
         document.getElementById('edit-submitted-tel').value='';
-        $(telId).attr('placeholder', 'Можемо запрограмувати формат 380---------');
+        $(telId).attr('placeholder', 'Можемо запрограмувати формат 380XXXXXXXXX');
       }
     }
   }
@@ -653,19 +653,26 @@ $(document).ready(function() {
   //   console.log('heloo, its book block');
   // },8000);
   //
-  // function validateButtons(id){
-  //   var value = $(id + ' input').val();
-  //   if( value.length !== 0){
-  //     $(id).parent().css('border', '2px solid red');
-  //     $(id).parent().css('background', '#e9e9e9');
-  //     $(id).parent().css('color', '#dfdfdf');
-  //     return true;
-  //   } else {
-  //     $(id).parent().css('border', '2px solid #db553f');
-  //     $(id).parent().css('background', 'rgba(255, 0, 0, .06)');
-  //     return false
-  //   }
-  // }
+  function validateButtons(id){
+    // var value = $(id).val();
+    var outputValue = false;
+    for (var vall = 0; vall<=2; vall++) {
+      if ($(id + ' .form-item:nth-child('+ vall +') .control-label').hasClass('active')) {
+        outputValue = true;
+      }
+    }
+
+    if( outputValue ){
+      $(id).css('border', 'none');
+      $(id).css('background', '#e9e9e9');
+      $(id).css('color', '#dfdfdf');
+      return true;
+    } else {
+      $(id).css('border', '2px solid #db553f');
+      $(id).css('background', 'rgba(255, 0, 0, .06)');
+      return false
+    }
+  }
 
   // console.log('Message 1');
   //

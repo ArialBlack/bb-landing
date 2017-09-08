@@ -30,7 +30,7 @@
 				<h4 class="modal-title">Ваш запит було надіслано.</h4>
 			</div>
 			<div class="modal-body">
-				<p>Ми з вами зв'яжемось.</p>
+				<p>Ми з вами зв'яжемось, дякую.</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Oк</span></button>
@@ -47,7 +47,7 @@
 				<h4 class="modal-title">Ваш запит було надіслано.</h4>
 			</div>
 			<div class="modal-body">
-				<p>Ми з вами зв'яжемось.</p>
+				<p>Ми з вами зв'яжемось, дякую.</p>
 			</div>
 			<div class="modal-footer">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Oк</span></button>
