@@ -8,13 +8,11 @@ $form_title = $form['field_title']['#items'][0]['value'];
 $form_subtitle = $form['pp_title']['#items'][0]['value'];
 ?>
 
-<!--(bake parts/head.php)-->
+<!--(bake parts/head.php title="Контакти | Book Box")-->
 
 <body class="page-contacts">
 
 <!--(bake parts/nav-and-header-2.php)-->
-
-<?php print $messages; ?>
 
 <section id="contacts">
 

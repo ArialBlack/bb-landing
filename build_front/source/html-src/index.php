@@ -40,13 +40,11 @@ $form_title = $form['field_title']['#items'][0]['value'];
 $form_subtitle = $form['pp_title']['#items'][0]['value'];
 ?>
 
-<!--(bake parts/head.php)-->
+<!--(bake parts/head.php title="Book Box")-->
 
 <body class="page-main">
 
 <!--(bake parts/nav-and-header.php)-->
-
-<?php print $messages; ?>
 
 <section id="intro" style="background-image: url('<?php print $intro_cover_image; ?>');">
         <div class="intro-content">

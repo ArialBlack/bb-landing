@@ -3,7 +3,7 @@ $node = node_load(51);
 
 ?>
 
-<!--(bake parts/head.php)-->
+<!--(bake parts/head.php title="Правила користування | Book Box")-->
 
 <body class="page-terms">
 

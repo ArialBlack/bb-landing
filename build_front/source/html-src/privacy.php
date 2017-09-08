@@ -3,13 +3,11 @@ $node = node_load(50);
 
 ?>
 
-<!--(bake parts/head.php)-->
+<!--(bake parts/head.php title="Політика конфіденційності | Book Box")-->
 
 <body class="page-privacy">
 
 <!--(bake parts/nav-and-header-2.php)-->
-
-<?php print $messages; ?>
 
 <section id="privacy">
     <div id="block-1" class="first-block-privacy">
