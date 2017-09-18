@@ -26,7 +26,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-						<img src="sites/all/themes/bookboxlanding_ui/images/checkmark.png"></img>
+						<img src="sites/all/themes/bookboxlanding_ui/images/checkmark.png" />
 				<h4 class="modal-title">Ваш запит було надіслано.</h4>
 			</div>
 			<div class="modal-body">
@@ -43,7 +43,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-<img src="sites/all/themes/bookboxlanding_ui/images/checkmark.png"></img>
+<img src="sites/all/themes/bookboxlanding_ui/images/checkmark.png" />
 				<h4 class="modal-title">Ваш запит було надіслано.</h4>
 			</div>
 			<div class="modal-body">
