@@ -17,6 +17,10 @@
       -o-transition: color .4s ease;
       transition: color .4s ease;
 
+      @media (max-width: 360px) {
+        font-size: 12px;
+      }
+
       &:hover {
         color: @header-text;
       }
@@ -26,6 +30,12 @@
       font-family:ubuntu-medium;
       color: @red;
       padding:0 8px;
+
+      @media (max-width: 360px) {
+        padding: 0 5px;
+        padding-top: 2px;
+        font-size: 12px;
+      }
     }
 
     .current {
@@ -33,6 +43,11 @@
       color: @header-text-2;
       font-size: @menu-text;
       text-transform: uppercase;
+
+      @media (max-width: 360px) {
+        padding-top: 2px;
+        font-size: 12px;
+      }
     }
   }
 
@@ -47,17 +62,29 @@
     }
 
     .first-block-terms {
-      padding-top: 230px;
+      padding-top: 150px;
       padding-bottom: 60px;
       background: @yellow;
+
+      @media (max-width: @laptop-1) {
+        padding-bottom: 50px;
+      }
 
       @media (max-width: @max-xs) {
         padding-top: 150px;
       }
 
       .col-md-5.col-sm-3.col-sm-offset-2 {
+        text-align: right;
+
         @media (min-width: 992px) {
           margin-left: 0;
+        }
+      }
+
+      .col-md-7.col-sm-7.col-xs-8 {
+        @media (max-width: 570px) {
+          width: 100%;
         }
       }
 
@@ -68,24 +95,40 @@
         text-transform: uppercase;
 
         @media (max-width: @max-xs) {
-          font-size: 45px;
+          font-size: 50px;
         }
 
-        @media (max-width: 600px) {
-          font-size: 28px;
+        @media (max-width: 740px) {
+          font-size: 42px;
         }
 
-        @media (max-width: 400px) {
-          font-size: 24px;
+        @media (max-width: 650px) {
+          font-size: 36px;
+        }
+
+        @media (max-width: 390px) {
+          font-size: 26px;
         }
       }
 
       img {
         margin-left: 20px;
-        margin-top: 20px;
 
         @media (max-width: @max-sm) {
+          margin-top: 10px;
+          width: 140px;
+        }
+
+        @media (max-width: @max-xs) {
+          width: 120px;
+        }
+
+        @media (max-width: 740px) {
           margin-top: 0;
+        }
+
+        @media (max-width: 570px) {
+          display: none;
         }
       }
     }
@@ -94,16 +137,26 @@
       background: @bg-color;
       padding: 90px 0 130px 0;
 
+      @media (max-width: @laptop-1) {
+        padding: 50px 0 60px 0;
+      }
+
       p {
         margin-bottom: 20px;
+        padding-left: 30px;
         font-family: ubuntu-medium;
         font-size: @body-text-n;
         color: #828282;
 
         strong {
           font-family: gillsans-bold;
+          margin-left: -30px;
           font-size: @text-block-title;
           color: @header-text;
+
+          @media (max-width: @max-xs) {
+            line-height: 1;
+          }
 
           em {
             font-style: normal;

@@ -444,7 +444,7 @@ $(document).ready(function() {
     $(this).addClass('active');
   });
 
-  if ($(window).width() < 768) {
+  if ($(window).outerWidth() < 768) {
     var faqCount = $('.faq-tab-menu .list-group > a').length;
     for(var s = 0; s < faqCount; s++) {
       //console.log('.page-main .faq-tab-menu .list-group-item:nth-child(' + (s - 1 + 2) +')' + ' add ' + '.page-main .faq-tab #tab-id-' + s );
@@ -642,7 +642,7 @@ $(document).ready(function() {
   });
 
   $(document).ajaxStop(function () {
-    if ($(window).width() > 768) {
+    if ($(window).outerWidth() > 768) {
       // $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll();
       $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();
       $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({

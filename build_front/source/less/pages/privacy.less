@@ -17,6 +17,10 @@
       -o-transition: color .4s ease;
       transition: color .4s ease;
 
+      @media (max-width: 360px) {
+        font-size: 12px;
+      }
+
       &:hover {
         color: @header-text;
       }
@@ -26,6 +30,12 @@
       font-family:ubuntu-medium;
       color: @red;
       padding:0 8px;
+
+      @media (max-width: 360px) {
+        padding: 0 5px;
+        padding-top: 2px;
+        font-size: 12px;
+      }
     }
 
     .current {
@@ -33,6 +43,11 @@
       color: @header-text-2;
       font-size: @menu-text;
       text-transform: uppercase;
+
+      @media (max-width: 360px) {
+        padding-top: 2px;
+        font-size: 12px;
+      }
     }
   }
 
@@ -47,12 +62,13 @@
     }
 
     .first-block-privacy {
-      padding-top: 230px;
+      padding-top: 150px;
       padding-bottom: 60px;
       background: @yellow;
 
       @media (max-width: @max-xs) {
         padding-top: 150px;
+        padding-bottom: 30px;
       }
 
       h1 {
@@ -61,34 +77,63 @@
         font-size: 60px;
         text-transform: uppercase;
 
-        @media (max-width: 1199px) {
-          font-size: 46px;
+        @media (max-width: @max-sm) {
+          font-size: 50px;
         }
 
-        @media (max-width: @max-sm) {
+        @media (max-width: 740px) {
           font-size: 42px;
         }
 
-        @media (max-width: 600px) {
-          font-size: 28px;
+        @media (max-width: 650px) {
+          font-size: 36px;
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 460px) {
+          font-size: 30px;
+        }
+
+        @media (max-width: 390px) {
+          font-size: 26px;
+        }
+
+        @media (max-width: 350px) {
           font-size: 24px;
         }
       }
 
+      .col-md-4 {
+        @media (max-width: @laptop-2) {
+          text-align: right;
+        }
+      }
+
       img {
-        margin-top: 20px;
+        margin-top: 10px;
+        width: 130px;
 
         @media (max-width: @max-sm) {
-          margin-top: 0;
+          margin-top: -20px;
+        }
+
+
+        @media (max-width: @max-xs) {
+          width: 95px;
+          margin-top: -180px;
+        }
+
+        @media (max-width: 570px) {
+          display: none;
         }
       }
     }
 
     .second-block-privacy {
       padding: 90px 0 130px 0;
+
+      @media (max-width: @laptop-1) {
+        padding: 50px 0 80px 0;
+      }
 
       h2 {
         margin:0;

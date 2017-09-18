@@ -24,3 +24,26 @@
 @max-sm: 991px;
 @max-xs: 767px;
 @min-xs: 320px;
+@laptop-1: 1367px;
+@laptop-2: 1199px;
+
+//some mixins
+
+
+.standrat-header {
+  font-family: gillsans-bold;
+  font-size: @screen-title;
+  text-transform: uppercase;
+
+  @media (max-width: @laptop-1) {
+    font-size: 36px;
+  }
+
+  @media (max-width: @laptop-2) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 30px;
+  }
+}

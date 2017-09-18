@@ -46,7 +46,13 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 
 <!--(bake parts/nav-and-header.php)-->
 
-<section id="intro" style="background-image: url('<?php print $intro_cover_image; ?>');">
+<section id="intro">
+        <div class="bg_lamp">
+          <img src="sites/all/themes/bookboxlanding_ui/images/svg/lamp.svg">
+        </div>
+        <div class="bg_man">
+          <img src="sites/all/themes/bookboxlanding_ui/images/bg_man.png">
+        </div>
         <div class="intro-content">
           <div class="container">
             <div class="row">
@@ -161,7 +167,9 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
             print render($feedback_block['content']);
         ?>
     </div>
+    <div class="people-block">
     <img src="sites/all/themes/bookboxlanding_ui/images/bottom_people.png">
+    </div>
     <a href="#intro" class="scroll-to"><img src="sites/all/themes/bookboxlanding_ui/images/scroll-to-2.jpg"></a>
 </section>
 
