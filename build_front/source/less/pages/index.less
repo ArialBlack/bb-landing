@@ -164,7 +164,8 @@
         margin-top: 35px;
         width: 100%;
         border-radius: 0;
-        line-height: 70px;
+        //line-height: 70px;
+        line-height: 40px;
         background: @red;
         font-family: ubuntu-medium;
         font-size: @body-text-n;
@@ -202,7 +203,8 @@
   }
 
   #how {
-    padding-top: 90px;
+    //padding-top: 90px;
+    padding-top: 50px;
     background-color: @bg-color;
 
     @media (max-width: @laptop-1) {
@@ -229,7 +231,11 @@
       justify-content: space-between;
       flex-wrap: wrap;
       width: 91.66666667%;
-      padding: 90px 0;
+      //padding: 90px 0;
+      padding-top: 35px;
+      padding-bottom: 50px;
+      padding-left: 0;
+      padding-right: 0;
 
       @media (max-width: @laptop-1) {
         padding-top: 35px;
@@ -314,6 +320,9 @@
         }
 
         img {
+          object-fit: none;
+          width: 140px;
+          height: 140px;
 
           @media (max-width: @laptop-1) {
             object-fit: none;
@@ -331,8 +340,10 @@
   }
 
   #books {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    //padding-top: 90px;
+    //padding-bottom: 90px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     background: @green;
 
     @media (max-width: @laptop-1) {
@@ -348,7 +359,8 @@
       font-family: ubuntu-medium;
       font-size: @body-text-n;
       color: #ffffff;
-      padding-bottom: 80px;
+      //padding-bottom: 80px;
+      padding-bottom: 30px;
 
       @media (max-width: @laptop-1) {
         padding-bottom: 30px;
@@ -798,7 +810,8 @@
   }
 
   #partners {
-    padding: 90px 0;
+    //padding: 90px 0;
+    padding: 50px 0;
     background: @bg-color;
 
     @media (max-width: @laptop-1) {
@@ -859,7 +872,8 @@
     }
 
     h3 {
-      padding-bottom: 70px;
+      //padding-bottom: 70px;
+      padding-bottom: 30px;
       font-family: ubuntu-medium;
       font-size: @body-text-n;
       color: @header-text;
@@ -876,6 +890,7 @@
 
   #rates {
     padding: 90px 0;
+    padding-top: 50px;
     background: #fad35c;
 
     @media (max-width: @laptop-1) {
@@ -1178,7 +1193,8 @@
   }
 
   #articles {
-    padding: 90px 0;
+    //padding: 90px 0;
+    padding: 50px 0;
     background-color: @bg-color;
 
     @media (max-width: @laptop-1) {
@@ -1354,7 +1370,8 @@
   }
 
   #faq {
-    padding: 90px 0;
+    //padding: 90px 0;
+    padding: 50px 0;
     background: @yellow;
 
     @media (max-width: @laptop-1) {
@@ -1375,7 +1392,7 @@
           font-family: gillsans-bold;
           position: absolute;
           top: 16px;
-          right: 35px;
+          right: 60px;
           color: #2e2e2e;
           transform: rotate(0deg);
           transition: all .4s ease;
@@ -1384,6 +1401,10 @@
           -ms-transition: all .2s ease;
           -o-transition: all .2s ease;
           transition: all .2s ease;
+
+          @media (max-width: 400px) {
+            right: 34px;
+          }
         }
 
         &:not(.active) {
@@ -1436,12 +1457,16 @@
             content: "▼";
             font-family: gillsans-bold;
             position: absolute;
-            top: 25px;
+            top: 31px;
             font-size: 13px;
             right: 32px;
             color: rgb(46, 46, 46);
             transform: rotate(0deg);
             transition: rotate 0.4s ease;
+
+            @media (max-width: 400px) {
+              right: 15px;
+            }
           }
 
           a {
@@ -1449,6 +1474,8 @@
             color: @header-text;
             font-size: @text-block-title;
             text-decoration: none;
+            display: block;
+            padding-right: 15px;
           }
         }
 
@@ -1528,7 +1555,7 @@
     .faq-tab-container {
       width: 100%;
       float: left;
-      padding-top: 70px;
+      padding-top: 40px;
 
       @media (max-width: @laptop-1) {
         padding-top: 40px;
@@ -1607,6 +1634,8 @@
               color: @header-text;
               font-size: @text-block-title;
               text-decoration: none;
+              padding-right: 10px;
+              display: block;
             }
           }
 
@@ -1644,7 +1673,8 @@
 
   #contacts {
     position: relative;
-    padding: 90px 0 0 0;
+    //padding: 90px 0 0 0;
+    padding: 50px 0 0 0;
     background: @bg-color;
 
     @media (max-width: @laptop-1) {
@@ -1714,7 +1744,7 @@
     }
 
     .webform-client-form.webform-client-form-48 {
-      padding-top: 65px;
+      padding-top: 30px;
 
       @media (max-width: @laptop-1) {
         padding-top: 30px;
@@ -1906,8 +1936,9 @@
           button {
             border-color: @red !important;
             border-radius: 0;
-            height: 70px;
-            width: 25%;
+            height: 50px;
+            letter-spacing: 6px;
+            width: 23%;
             text-transform: uppercase;
             font-family: ubuntu-medium;
             font-size: @body-text-n;
