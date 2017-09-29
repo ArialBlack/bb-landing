@@ -74,15 +74,19 @@
         padding-top: 150px;
       }
 
-      .col-md-5.col-sm-3.col-sm-offset-2 {
-        text-align: right;
+      .col-md-4.col-sm-3.col-sm-offset-2 {
+        text-align: left;
+
+        @media (max-width: @laptop-2) {
+          text-align: right;
+        }
 
         @media (min-width: 992px) {
           margin-left: 0;
         }
       }
 
-      .col-md-7.col-sm-7.col-xs-8 {
+      .col-md-8.col-sm-7.col-xs-8 {
         @media (max-width: 570px) {
           width: 100%;
         }

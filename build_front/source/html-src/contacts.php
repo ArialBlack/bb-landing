@@ -27,7 +27,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
           <h3><?php print $form_subtitle; ?></h3>
         </div>
         <div class="col-md-4 col-sm-3">
-        <img src="sites/all/themes/bookboxlanding_ui/images/svg/forma_6.svg">
+        <img src="sites/all/themes/bookboxlanding_ui/images/svg/Forma_6.svg">
         </div>
       </div>
 		</div>

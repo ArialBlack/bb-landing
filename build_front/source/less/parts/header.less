@@ -33,12 +33,12 @@
     @media (max-width: @max-xs) {
       min-height: 65px;
       padding: 15px 15px;
-      position: relative;
+      position: unset;
 
       &:after {
         content:'';
         position: absolute;
-        bottom:0;
+        top: 80px;
         right: 15px;
         width: ~'calc(100% - 30px)';
         height: 2px;
@@ -48,6 +48,13 @@
 
       .navbar-header {
         position: relative;
+      }
+    }
+
+    @media (max-width: @min-xs) {
+      &:after {
+        width: ~'calc(100% - 10px)';
+        right: 5px;
       }
     }
 

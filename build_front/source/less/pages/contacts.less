@@ -141,7 +141,7 @@
       position: absolute;
       left: -5px;
       top: 0;
-      background: url(../images/svg/forma_5.svg) no-repeat;
+      background: url(../images/svg/Forma_5.svg) no-repeat;
       height: 100%;
       width: 30px;
       background-size: 90%;
@@ -156,7 +156,7 @@
       position: absolute;
       left:-5px;
       top:0;
-      background: url(../images/svg/forma_4.svg) no-repeat;
+      background: url(../images/svg/Forma_4.svg) no-repeat;
       height: 100%;
       width: 30px;
       background-size: 90%;
@@ -217,6 +217,20 @@
 
     .webform-client-form.webform-client-form-49 {
       padding-top: 50px;
+
+      .webform-error {
+        &::placeholder {
+          color: @red;
+        }
+      }
+
+      .form-text, textarea {
+        &:focus {
+          box-shadow: none;
+          border-color: #ccc;
+          border-bottom: 3px solid @yellow;
+        }
+      }
 
       @media (max-width: 430px) {
         padding-top: 0;
@@ -280,6 +294,8 @@
 
         button {
           border-radius: 0;
+          border:none;
+          outline: 0;
           height: 50px;
           letter-spacing: 6px;
           width: 23%;
