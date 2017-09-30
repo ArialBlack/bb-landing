@@ -201,7 +201,7 @@ function initListeners() {
       e.preventDefault();
        $('.books-nav > ul > li.hidden').removeClass('hidden');
       $('.books-nav > ul > li.active:not(.hits) >a').css('text-align','left');
-      if ($('.books-nav li.category').hasClass('hits')) {
+      if ($(this).parent().hasClass('hits')) {
 
         if ($('.books-nav > ul').outerHeight() == '55') {
           $('.books-nav > ul').animate({height: $('.books-nav > ul')[0].scrollHeight}, 200);
@@ -217,7 +217,7 @@ function initListeners() {
       }
     });
 
-    $(document).on('click', '.page-main .books-nav li.category:not(.active) > .category-title', function(e) {
+    $(document).on('click', '.page-main .books-nav li.category:not(.active) > a', function(e) {
       e.preventDefault();
       e.stopImmediatePropagation();
       $('.page-main .books-nav li.category.active').css('height', '55px');
@@ -225,10 +225,9 @@ function initListeners() {
       $('.page-main .books-nav li.category.active .child-categories').css('height', '0');
       $('.page-main .books-nav li.category.active').removeClass('active');
 
-      if ($(this).hasClass('hits')) {
+      if ($(this).parent().hasClass('hits')) {
         $(this).parent().addClass('active');
-        $('.page-main .books-nav>ul > li.category.active').css('height', $('.page-main .books-nav>ul > li.category.active')[0].scrollHeight);
-        $('.page-main .books-nav>ul').css('height',$('.page-main .books-nav>ul').outerHeight());
+        $('.page-main .books-nav>ul').css('height','55px');
 
       } else {
         $(this).parent().addClass('active');
