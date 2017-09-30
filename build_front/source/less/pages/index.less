@@ -3,6 +3,16 @@
   mark {
     color: #fff;
     background-color: #2c2b33;
+
+    @media (max-width: @laptop-2) {
+      box-shadow: 10px 0 0 #2c2b33, -10px 0 0 #2c2b33;
+      padding: 5px 0;
+    }
+
+    @media (max-width: 480px) {
+      padding-top: 10px;
+      line-height: 1.2;
+    }
   }
 
   #intro {
@@ -868,6 +878,10 @@
               @media  (max-width: 400px) {
                 display: none;
               }
+
+              &.second-dots {
+                display: none;
+              }
             }
           }
         }
@@ -1377,7 +1391,7 @@
             }
           }
 
-          @media (max-width: 400px) {
+          @media (max-width: 370px) {
             float: none;
             width: 65%;
 
@@ -1410,7 +1424,7 @@
             padding-left: 10px;
           }
 
-          @media (max-width: 400px) {
+          @media (max-width: 370px) {
             display: block;
             width: 80%;
           }
@@ -1876,10 +1890,7 @@
       }
 
       mark {
-        @media (max-width: @laptop-2) {
-          box-shadow: 10px 0 0 #2c2b33, -10px 0 0 #2c2b33;
-          padding: 5px 0;
-        }
+
       }
     }
 

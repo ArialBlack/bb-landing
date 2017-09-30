@@ -5,6 +5,37 @@ var category_json = 'https://lib.bookbox.ua/json/category',
     categories,
     hits;
 
+if ($(window).outerWidth() > 768) {
+  $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();
+  $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({
+    cursorborder:"",
+    cursorcolor:"rgba(0, 0, 0, .4)",
+    background: "rgba(0, 0, 0, .2)",
+    railoffset: true,
+    boxzoom:false,
+    spacebarenabled: true,
+    autohidemode: false
+  });
+}
+
+//script written 30.09 fixes the problem with dots
+function hideIndicatorsDots() {
+  var lastListIndicatorCount = parseInt($('.list-page-indicators ul li:last-child').text()),
+    activeListIndicatorCount = parseInt($('.list-page-indicators ul li.active').text()),
+    hidDotsIndicator = lastListIndicatorCount - 2,
+    windowOW = $(window).outerWidth();
+  console.log(hidDotsIndicator);
+  // console.log(activeListIndicatorCount);
+  // console.log(lastListIndicatorCount);
+  if ( activeListIndicatorCount >= hidDotsIndicator && $('.list-page-indicators ul li').length > 4 && windowOW > 400) {
+    $('.dots').not('.second-dots').css('display', 'none');
+    $('.second-dots').css('display', 'inline-block');
+  } else if (activeListIndicatorCount < hidDotsIndicator && $('.list-page-indicators ul li').length > 4 && windowOW > 400) {
+    $('.dots').not('.second-dots').css('display', 'inline-block');
+    $('.second-dots').css('display', 'none');
+  }
+}
+
 
 function getRequests() {
     getHits();
@@ -75,8 +106,11 @@ function buildBookBlocks() {
     for (p = 4; p < $('.list-page-indicators li').length; p++) {
       $('.list-page-indicators li:nth-child(' + p + ')').addClass('hidden');
     }
-
     $("<li class='dots'>...</li>").insertBefore($(".list-page-indicators ul li:last-child"));
+    var Dots2Indicator =parseInt($(".list-page-indicators ul li:last-child").text()) - 3;
+
+    //script written 30.09 for fix problem with dots
+    $("<li class='dots second-dots'>...</li>").insertBefore($(".list-page-indicators ul li:nth-child("+ Dots2Indicator +')'));
     $(".list-page-indicators").prepend('<span class="left">◀</span>');
     $(".list-page-indicators").append('<span class="right is">▶</span>');
   }
@@ -280,6 +314,10 @@ function initListeners() {
       }
     }
 
+    //script written 30.09 fixes the problem with dots
+    hideIndicatorsDots();
+
+
     //console.log('indicator which was clicked', $(this).text());
     $('.books-container .book-block').removeClass('num-1');
     var currentPage = $(this).text();
@@ -314,6 +352,7 @@ function initListeners() {
         $(bookBlock2).addClass('num-1');
       }
     }
+    hideIndicatorsDots();
   });
 
   $(document).on('click', '.list-page-indicators .right', function(e) {
@@ -340,6 +379,7 @@ function initListeners() {
         $(bookBlock3).addClass('num-1');
       }
     }
+    hideIndicatorsDots();
   });
 
   $(document).on('click', '#books .books-nav .child-categories .child-category .child-category-title', function(e) {
@@ -391,7 +431,7 @@ function initListeners() {
 
 $(document).ready(function() {
 
-  $('.page-main .nav.navbar-nav li a').click(function(e) {
+  $('.page-main .nav.navbar-nav > li a').click(function(e) {
     e.preventDefault();
     var target = $(this).attr('href');
     var offsetScroll = $(target).offset().top;
@@ -650,6 +690,15 @@ e.preventDefault();
       })
       );
     }
+
+    // if ($(window).width() < 480) {
+    //   $('#intro').css('height', $(window).outerHeight() + 'px');
+    // }
+
+    $('.modal-footer button').click(function() {
+      $('.modal.fade.in').css('display', 'none');
+    });
+
   });
 
   $(document).ajaxStop(function () {

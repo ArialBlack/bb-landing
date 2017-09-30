@@ -26,7 +26,6 @@ $node = node_load(50);
 
     <div class="second-block-privacy">
       <div class="container">
-          <h2> About This Privacy Policy</h2>
           <?php print $node->body['und'][0]['safe_value']; ?>
       </div>
     </div>
