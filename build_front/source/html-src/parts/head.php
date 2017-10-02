@@ -12,4 +12,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/sites/all/themes/bookboxlanding_ui/favicon-16x16.ico">
     <link rel="manifest" href="/sites/all/themes/bookboxlanding_ui/manifest.json">
     <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Book Box" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://landing.bookbox.ua/" />
+    <meta property="og:image" content="sites/all/themes/bookboxlanding_ui/link_bg.png" />
+    <meta name="description" content="Book Box - це новий сервіс читання для компаній зі щотижневою доставкою кращих книг в офіси. Приєднуйтесь!" />
 </head>
