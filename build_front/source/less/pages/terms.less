@@ -1,0 +1,174 @@
+.page-terms {
+  background: @bg-color;
+
+  .bread-crumbs {
+    p.to-main, span {
+      float: left;
+    }
+
+    .to-main a {
+      font-family:ubuntu-medium;
+      color: @header-text-2;
+      font-size: @menu-text;
+      text-transform: uppercase;
+      -webkit-transition: color .4s ease;
+      -moz-transition: color .4s ease;
+      -ms-transition: color .4s ease;
+      -o-transition: color .4s ease;
+      transition: color .4s ease;
+
+      @media (max-width: 360px) {
+        font-size: 12px;
+      }
+
+      &:hover {
+        color: @header-text;
+      }
+    }
+
+    span {
+      font-family:ubuntu-medium;
+      color: @red;
+      padding:0 8px;
+
+      @media (max-width: 360px) {
+        padding: 0 5px;
+        padding-top: 2px;
+        font-size: 12px;
+      }
+    }
+
+    .current {
+      font-family:ubuntu-medium;
+      color: @header-text-2;
+      font-size: @menu-text;
+      text-transform: uppercase;
+
+      @media (max-width: 360px) {
+        padding-top: 2px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  #terms-of-use {
+    position: relative;
+
+    .scroll-to {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .first-block-terms {
+      padding-top: 150px;
+      padding-bottom: 60px;
+      background: @yellow;
+
+      @media (max-width: @laptop-1) {
+        padding-bottom: 50px;
+      }
+
+      @media (max-width: @max-xs) {
+        padding-top: 150px;
+      }
+
+      .col-md-4.col-sm-3.col-sm-offset-2 {
+        text-align: left;
+
+        @media (max-width: @laptop-2) {
+          text-align: right;
+        }
+
+        @media (min-width: 992px) {
+          margin-left: 0;
+        }
+      }
+
+      .col-md-8.col-sm-7.col-xs-8 {
+        @media (max-width: 570px) {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        font-family: gillsans-bold;
+        color: @header-text;
+        font-size: 60px;
+        text-transform: uppercase;
+
+        @media (max-width: @max-xs) {
+          font-size: 50px;
+        }
+
+        @media (max-width: 740px) {
+          font-size: 42px;
+        }
+
+        @media (max-width: 650px) {
+          font-size: 36px;
+        }
+
+        @media (max-width: 390px) {
+          font-size: 26px;
+        }
+      }
+
+      img {
+        margin-left: 20px;
+
+        @media (max-width: @max-sm) {
+          margin-top: 10px;
+          width: 140px;
+        }
+
+        @media (max-width: @max-xs) {
+          width: 120px;
+        }
+
+        @media (max-width: 740px) {
+          margin-top: 0;
+        }
+
+        @media (max-width: 570px) {
+          display: none;
+        }
+      }
+    }
+
+    .second-block-terms {
+      background: @bg-color;
+      padding: 50px 0 60px 0;
+
+
+      @media (max-width: @laptop-1) {
+        padding: 50px 0 60px 0;
+      }
+
+      p {
+        margin-bottom: 20px;
+        padding-left: 30px;
+        font-family: ubuntu-medium;
+        font-size: @body-text-n;
+        color: #828282;
+
+        strong {
+          font-family: gillsans-bold;
+          margin-left: -30px;
+          font-size: @text-block-title;
+          color: @header-text;
+
+          @media (max-width: @max-xs) {
+            line-height: 1;
+          }
+
+          em {
+            font-style: normal;
+            color: #f86b54;
+          }
+        }
+      }
+    }
+  }
+}

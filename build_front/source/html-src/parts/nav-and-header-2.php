@@ -22,11 +22,11 @@
         <div class="col-md-5 col-sm-6">
 	        <div id="navbar" class="collapse navbar-collapse">
 	            <ul class="nav navbar-nav">
-	                <li class="active"><a href="#how">Як це працює</a></li>
-	                <li><a href="#books">Асортимент</a></li>
+	                <li class="active"><a href="/#how">Як це працює</a></li>
+	                <li><a href="/#books">Асортимент</a></li>
 	                <!-- <li><a href="/#price">Вартість</a></li> -->
-	                <li><a href="#partners">Наші клієнти</a></li>
-	                <li><a href="#faq">FAQ</a></li>
+	                <li><a href="/#partners">Наші клієнти</a></li>
+	                <li><a href="/#faq">FAQ</a></li>
 	                <div class="mob">
 	                <li><a href="https://lib.bookbox.ua/user" class="login">Вхід</a></li>
 	                <li><a href="https://lib.bookbox.ua/user/register" class="reg">Реєстрація</a></li>

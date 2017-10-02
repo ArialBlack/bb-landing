@@ -3,20 +3,33 @@ $node = node_load(50);
 
 ?>
 
-<!--(bake parts/head.php)-->
+<!--(bake parts/head.php title="Політика конфіденційності | Book Box")-->
 
-<body class="page-main">
+<body class="page-privacy">
 
-<!--(bake parts/nav-and-header.php)-->
+<!--(bake parts/nav-and-header-2.php)-->
 
-<?php print $messages; ?>
-
-<section id="contacts">
-    <div class="container">
-        <h1><?php print $node->title; ?></h1>
-
-        <?php print $node->body['und'][0]['safe_value']; ?>
+<section id="privacy">
+    <div id="block-1" class="first-block-privacy">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-8">
+            <div class="bread-crumbs"><p class="to-main"><a href="/">Book Box</a></p><span class="bread-arrow">▶</span><p class="current"><?php print $node->title; ?></p></div>
+              <h1><?php print $node->title; ?></h1>
+            </div>
+            <div class="col-md-4 col-sm-4">
+            <img src="sites/all/themes/bookboxlanding_ui/images/svg/Forma_3.svg">
+            </div>
+          </div>
+        </div>
     </div>
+
+    <div class="second-block-privacy">
+      <div class="container">
+          <?php print $node->body['und'][0]['safe_value']; ?>
+      </div>
+    </div>
+    <a href="#block-1" class="scroll-to"><img src="sites/all/themes/bookboxlanding_ui/images/scroll-to-2.jpg"></a>
 </section>
 
     <!--(bake parts/footer.php)-->

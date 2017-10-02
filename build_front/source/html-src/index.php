@@ -40,23 +40,39 @@ $form_title = $form['field_title']['#items'][0]['value'];
 $form_subtitle = $form['pp_title']['#items'][0]['value'];
 ?>
 
-<!--(bake parts/head.php)-->
+<!--(bake parts/head.php title="Book Box")-->
 
 <body class="page-main">
 
 <!--(bake parts/nav-and-header.php)-->
 
-<?php print $messages; ?>
-
 <section id="intro">
-        <h1><?php print $into_title; ?></h1>
-        <img src="<?php print $intro_cover_image; ?>" />
-        <a class="btn btn-danger" href="#order">Замовити</a>
+        <div class="bg_lamp">
+          <img src="sites/all/themes/bookboxlanding_ui/images/svg/lamp.svg">
+        </div>
+        <div class="bg_man">
+          <img src="sites/all/themes/bookboxlanding_ui/images/bg_man.png">
+        </div>
+        <div class="intro-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-9">
+                <h1><strong><?php print $into_title; ?></strong></h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <a class="btn btn-danger scroll-to-2" href="#contacts">Замовити</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#how" class="scroll-to"><img src="sites/all/themes/bookboxlanding_ui/images/scroll-to.jpg"></a>
 </section>
 
 <section id="how">
     <div class="container">
-        <h2><?php print $how_title; ?></h2>
+        <h2><mark><?php print $how_title; ?></mark></h2>
         <h3><?php print $how_subtitle; ?></h3>
 
         <ul>
@@ -80,23 +96,31 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 
 <section id="books">
     <div class="container">
+    <h2><mark>Асортимент</mark></h2>
+    <h3>Від design thinking до фентезі, від астрофізики до бігу. Українська, російська, англійська мови.</h3>
         <div class="books-nav"></div>
         <div class="books-list"></div>
     </div>
 </section>
 
-<section id="price">
+<!-- <section id="price">
     <div class="container">
-        <h2><?php print $price_title; ?></h2>
+    <div class="col-md-3 col-sm-3 col-xs-4">
+        <h2><mark><?php print $price_title; ?></mark></h2>
+    </div>
+    <div class="col-md-5 col-sm-6 col-xs-6 text-right price-count">
         <h3><?php print $price_value; ?></h3>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-4 col-md-offset-1">
         <h4><?php print $price_prefix; ?></h4>
         <h5><?php print $price_notes; ?></h5>
     </div>
-</section>
+    </div>
+</section> -->
 
 <section id="partners">
     <div class="container">
-        <h2><?php print $partners_title; ?></h2>
+        <h2><mark><?php print $partners_title; ?></mark></h2>
         <h3><?php print $partners_subtitle ?></h3>
 
         <?php
@@ -108,7 +132,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 
 <section id="rates">
     <div class="container">
-        <h2><?php print $rates_title; ?></h2>
+        <h2><mark><?php print $rates_title; ?></mark></h2>
 
         <?php
             print views_embed_view('rates', 'block');
@@ -118,7 +142,7 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 
 <div id="articles">
     <div class="container">
-        <h2><?php print $articles_title; ?></h2>
+        <h2><mark><?php print $articles_title; ?></mark></h2>
 
         <?php
             print views_embed_view('articles', 'block');
@@ -128,15 +152,14 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
 
 <div id="faq">
     <div class="container">
-        <h2><?php print $faq_title; ?></h2>
-
+        <h2><mark><?php print $faq_title; ?></mark></h2>
         <!--(bake parts/faq.php)-->
     </div>
 </div>
 
 <section id="contacts">
     <div class="container">
-        <h2><?php print $form_title; ?></h2>
+        <h2><mark><?php print $form_title; ?></mark></h2>
         <h3><?php print $form_subtitle ?></h3>
 
         <?php
@@ -144,6 +167,10 @@ $form_subtitle = $form['pp_title']['#items'][0]['value'];
             print render($feedback_block['content']);
         ?>
     </div>
+    <div class="people-block">
+    <img src="sites/all/themes/bookboxlanding_ui/images/bottom_people.png">
+    </div>
+    <a href="#intro" class="scroll-to"><img src="sites/all/themes/bookboxlanding_ui/images/scroll-to-2.jpg"></a>
 </section>
 
     <!--(bake parts/footer.php)-->
