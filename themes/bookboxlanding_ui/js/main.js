@@ -5,7 +5,7 @@ var category_json = 'https://lib.bookbox.ua/json/category',
     categories,
     hits;
 
-if ($(window).outerWidth() > 768) {
+if ($(window).outerWidth() > 767) {
   $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();
   $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({
     cursorborder:"",
@@ -24,9 +24,7 @@ function hideIndicatorsDots() {
     activeListIndicatorCount = parseInt($('.list-page-indicators ul li.active').text()),
     hidDotsIndicator = lastListIndicatorCount - 2,
     windowOW = $(window).outerWidth();
-  console.log(hidDotsIndicator);
-  // console.log(activeListIndicatorCount);
-  // console.log(lastListIndicatorCount);
+  // console.log(hidDotsIndicator);
   if ( activeListIndicatorCount >= hidDotsIndicator && $('.list-page-indicators ul li').length > 4 && windowOW > 400) {
     $('.dots').not('.second-dots').css('display', 'none');
     $('.second-dots').css('display', 'inline-block');
@@ -154,7 +152,7 @@ function buildCategory() {
 
 
 $(".faq-tab-menu>div.list-group>a").click(function(e) {
-  if ( $(window).outerWidth() > 768) {
+  if ( $(window).outerWidth() > 767) {
     e.preventDefault();
     $(this).siblings('a.active').removeClass("active");
     $(this).addClass("active");
@@ -165,7 +163,6 @@ $(".faq-tab-menu>div.list-group>a").click(function(e) {
 });
 
 $('.panel-collapse').on('shown.bs.collapse', function () {
-  // $('.faq-tab-content.active .panel-collapse').not(this).removeClass('in');
   $('.faq-tab-content.active .panel-collapse.in').not(this).siblings('.panel-heading').find('a').click();
 });
 
@@ -174,7 +171,6 @@ $('.faq-tab-container .panel-heading .panel-title a').on('click', function() {
     $(this).parent().parent().removeClass('opened');
   }
   else {
-    // $('.faq-tab-content.active .panel-heading .panel-title.opened').removeClass('opened');
     $(this).parent().parent().addClass('opened');
   }
 });
@@ -246,7 +242,6 @@ function initListeners() {
       } else {
         $(this).parent().css('height',  (55 + $('.books-nav .category.active .child-categories')[0].scrollHeight) + 10 + 'px');
         $('.books-nav .category.active .child-categories').css('height', $('.books-nav .category.active .child-categories')[0].scrollHeight + 'px');
-        // $('.books-nav > ul').animate({height: $('.books-nav > ul')[0].scrollHeight}, 200);
         $('.page-main .books-nav>ul').css('height',$('.page-main .books-nav>ul')[0].scrollHeight  );
       }
     });
@@ -273,8 +268,6 @@ function initListeners() {
 
     $(document).on('click','.page-main .books-nav li.category.active .child-categories .child-category a', function() {
       $('.books-nav > ul > li:not(.active)').addClass('hidden');
-      // $('.page-main .books-nav li.category.active .child-categories').css('height', '0');
-      // $('.page-main .books-nav li.category.active').css('height', 'inherit');
       $('.page-main .books-nav>ul').css('height', '55px');
       $('.books-nav > ul > li.active >a').css('text-align','right');
 
@@ -317,8 +310,6 @@ function initListeners() {
     //script written 30.09 fixes the problem with dots
     hideIndicatorsDots();
 
-
-    //console.log('indicator which was clicked', $(this).text());
     $('.books-container .book-block').removeClass('num-1');
     var currentPage = $(this).text();
     for(var c = (currentPage * 6 - 5); c < (currentPage * 6 + 1) ;c++) {
@@ -507,11 +498,6 @@ e.preventDefault();
   }
 
   $('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').click(function() {
-    // var offsetFaqHeight = $(this).parent().parent().position().top;
-    ///console.log(offsetFaqHeight);
-    //console.log($(this).parent().parent().parent());
-    //console.log($('.page-main #faq .faq-tab-container .faq-tab .panel.panel-default .panel-heading a').position().top);
-    // $('.page-main #faq .faq-tab-container .faq-tab .faq-tab-content.active').animate({scrollTop: offsetFaqHeight}, 100);
     setTimeout(function() {    $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();}, 200);
   });
 
@@ -542,6 +528,20 @@ e.preventDefault();
     $(this).css('background','');
     $(this).css('color','');
     $(this).removeClass('webform-error');
+  });
+
+  //Delete whitespaces from phone form
+  var txt = $(".webform-component--tel input");
+  var func = function() {
+    txt.val(txt.val().replace(/\s/g, ''));
+  };
+  txt.keyup(func).blur(func);
+  //
+
+  $('.webform-component--tel input').on('click', function() {
+    if( ! $(this).val().length) {
+      $(this).val('+380');
+    }
   });
 
   $('#webform-client-form-49 .webform-submit').on('click', function(e) {
@@ -702,7 +702,7 @@ e.preventDefault();
   });
 
   $(document).ajaxStop(function () {
-    if ($(window).outerWidth() > 768) {
+    if ($(window).outerWidth() > 767) {
       $(".col-sm-9.faq-tab .faq-tab-content").getNiceScroll().resize();
       $(".col-sm-9.faq-tab .faq-tab-content").niceScroll({
         cursorborder:"",
