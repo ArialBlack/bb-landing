@@ -538,7 +538,7 @@ e.preventDefault();
   txt.keyup(func).blur(func);
   //
 
-  $('.webform-component--tel input').on('click', function() {
+  $('.webform-component--tel input').on('mousedown', function() {
     if( ! $(this).val().length) {
       $(this).val('+380');
     }

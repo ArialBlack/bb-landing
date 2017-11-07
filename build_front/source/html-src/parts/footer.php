@@ -6,7 +6,8 @@
         	</div>
         	<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2 text-center read-better">
         		<h1>Read better</h1>
-        		<a href="https://www.facebook.com/bookboxua">Ми на Facebook</a>
+        		<div><a href="https://www.facebook.com/bookboxua">Ми на Facebook</a></div>
+        		<div class="telegram-link"><a href="https://t.me/readbetter">Ми в Telegram</a></div>
         	</div>
         	<div class="col-md-4 col-sm-4 col-xs-4 text-right footer-links">
         		<ul>
